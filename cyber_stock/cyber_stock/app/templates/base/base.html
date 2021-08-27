@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
@@ -14,28 +15,35 @@
         </div>
         <div id="menu">
             <div id="vender">
+                <img src="../../icones/cesta.jpg" width=40 height=40>
                 <h3 id="h3Vender">Vender</h3>
             </div>
             <div id="linhaVertical"></div>
             <div id="comprar">
+                <img src="../../icones/caixa.jpg" width=40 height=40>
                 <h3>Comprar</h3>
             </div>
             <div id="linhaVertical"></div>
             <div id="estoque">
+                <img src="../../icones/grid.jpg" width=25 height=25>
                 <h3>Estoque</h3>
             </div>
             <div id="linhaVertical"></div>
             <div id="cadastrar">
+                <img src="../../icones/mais.jpg" width=30 height=30>
                 <h3>Cadastrar</h3>
             </div>
             <div id="linhaVertical"></div>
             <div id="financeiro">
+                <img src="../../icones/dollar.jpg" width=30 height=30>
                 <h3>Financeiro</h3>
             </div>
         </div>
         <div id="conteudo">
-
+            {% block conteudo %}
+            {% endblock %}
         </div>
+        
         
     </body>
     <style>
