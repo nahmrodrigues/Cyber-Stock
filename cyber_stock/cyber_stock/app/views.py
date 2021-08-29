@@ -4,3 +4,7 @@ from django.views.generic import TemplateView
 
 class Index(TemplateView):
     template_name = 'base/base.html'
+
+
+class CadastrarTipos(TemplateView):
+    template_name = 'cadastrarTipos/cadastrarTipos.html'
