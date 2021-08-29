@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/product_types.css' %}">
+</head>
+
+<div id="conteiner">
+
+    <h1>Preencha os campos</h1>
+    <form method="post" class="envelopeNomeTipo">
+        {% csrf_token %} {{ form.as_p }}
+        <input type="submit" value="Criar Tipo de Produto"/>
+    </form>  
+</div>
+{% endblock %}

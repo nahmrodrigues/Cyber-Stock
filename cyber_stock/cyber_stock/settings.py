@@ -36,9 +36,11 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'cyber_stock'
+    'django.contrib.staticfiles',   
+    'product_types',
+    'products'
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -55,7 +57,11 @@ ROOT_URLCONF = 'cyber_stock.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / 'templates',
+            'product_types/templates',
+            'products/templates'
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
