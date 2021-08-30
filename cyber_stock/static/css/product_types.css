@@ -1,55 +1,78 @@
 div#conteiner{
-    height: 30rem;
-    width: 85rem;
-    display: flex;
-    flex-direction: column;
-    padding-left: 2rem;
+  height: 30rem;
+  width: 85rem;
+  display: flex;
+  flex-direction: column;
+  padding-left: 2rem;
+  
 }
-.envelopeNomeTipo {
-    display: flex;
-    flex-direction: column;
-    
-    box-sizing: border-box;
-    height: 3rem;
-    width: 20rem;
-  }
+form.register-type{
+  width: 45rem;
+  height: 30rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.button-send-types{
+  height: 2rem;
+  width: 9rem;
+  background-color: #40942A;
+  border: none;
+  color: white;
+  margin-top: 2rem;
+  align-self: flex-end;
   
-  .nomeTipoProduto {
-    
-    border: none;
-    border-bottom: 1px solid #CCC;
-    color: #555;
-    box-sizing: border-box;
-    font-family: 'RobotoMono';
-    font-size: 18px;
-    height: 3.125rem;
-    
-    padding: 0.625rem 0rem;
-    width: 20rem;
-    outline: none;
-  }
+}
+
+.button-send-types:active{
+  background-color: #005F40;
+}
+
+div.register-type {
+ 
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  margin-left: 3rem;
+  height: 3rem;
+  width: 20rem;
+}
+
+.input-text {
   
-  
-  
-  .nomeTipoProduto::-webkit-nomeTipoProduto-placeholder {
-    color: #AAA;
-  }
-  
-  .nomeTipoProduto:focus::-webkit-nomeTipoProduto-placeholder {
-    color: #005F40;
-  }
-  
-  .nomeTipoProduto:focus+.underline {
-    transform: scale(1);
-  }
-  
-  .underline{
-    background-color: #005F40;
-    display: inline-block;
-    height: 0.125rem;
-    -webkit-transform: scale(0, 1);
-    transform: scale(0, 1);
-    -webkit-transition: all 0.5s linear;
-    transition: all 0.5s linear;
-    width: 20rem;
-  }
+  border: none;
+  border-bottom: 1px solid #CCC;
+  color: #555;
+  box-sizing: border-box;
+  font-family: 'Roboto';
+  font-size: 18px;
+  height: 3.125rem;
+  padding: 0.625rem 0rem;
+  width: 20rem;
+  outline: none;
+}
+
+
+
+.input-text::-webkit-input-text-placeholder {
+  color: #AAA;
+}
+
+.input-text:focus::-webkit-input-text-placeholder {
+  color: #005F40;
+}
+
+.input-text:focus+.underline {
+  transform: scale(1);
+}
+
+.underline{
+  background-color: #005F40;
+  display: inline-block;
+  height: 0.125rem;
+  -webkit-transform: scale(0, 1);
+  transform: scale(0, 1);
+  -webkit-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+  width: 20rem;
+}
