@@ -11,26 +11,26 @@
     <body>
         
         <div id="cabecalho">
-            <img src="{% static '../../static/icones/CyberStock_Logo.jpg'  %}" width="105" height="105">
+            <img src="{% static 'icones/CyberStock_Logo.jpg'  %}" width="105" height="105">
         </div>
         <div id="menu">
             <div id="vender">
-                <img src="{% static '../../static/icones/cesta.jpg' %}" width=40 height=40>
+                <img src="{% static 'icones/cesta.jpg' %}" width=40 height=40>
                 <h3 id="h3Vender">Vender</h3>
             </div>
             <div id="linhaVertical"></div>
             <div id="comprar">
-                <img src="{% static '../../static/icones/caixa.jpg' %}" width=40 height=40>
+                <img src="{% static 'icones/caixa.jpg' %}" width=40 height=40>
                 <h3>Comprar</h3>
             </div>
             <div id="linhaVertical"></div>
             <div id="estoque">
-                <img src="{% static '../../static/icones/grid.jpg' %}" width=25 height=25>
+                <img src="{% static 'icones/grid.jpg' %}" width=25 height=25>
                 <h3>Estoque</h3>
             </div>
             <div id="linhaVertical"></div>
             <div id="cadastrar">
-                <img src="{% static '../../static/icones/mais.jpg'  %}" width=30 height=30>
+                <img src="{% static 'icones/mais.jpg'  %}" width=30 height=30>
                 <h3>Cadastrar</h3>
             </div>
             <div id="linhaVertical"></div>
@@ -39,8 +39,8 @@
                 <h3>Financeiro</h3>
             </div>
         </div>
-        <div id="conteudo">
-            {% block conteudo %}
+        <div id="content">
+            {% block content %}
             {% endblock %}
         </div>
         

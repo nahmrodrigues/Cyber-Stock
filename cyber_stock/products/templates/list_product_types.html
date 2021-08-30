@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div>
+    {% for type in object_list %}
+        <p>{{ type.name }}</p>
+    {% endfor %}
+</div>
+
+<table class="table sticky">    
+                    <thead>
+                        <tr>
+                            <th>Tipo de produto</th>							
+                            <th>Quantidade de marcas</th>	
+                            <th colspan="3">Ação</th>			
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><img src="../../icones/list.png" width=13 height=13>listar</td>
+                            <td><img src="../../icones/edit.png" width=13 height=13>editar</td>
+                            <td><img src="../../icones/trash.png" width=13 height=13> excluir</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><img src="../../icones/list.png" width=13 height=13>listar</td>
+                            <td><img src="../../icones/edit.png" width=13 height=13>editar</td>
+                            <td><img src="../../icones/trash.png" width=13 height=13> excluir</td>
+                        </tr>
+                    </tbody>
+</table>
+{%endblock%}
