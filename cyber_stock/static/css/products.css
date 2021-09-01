@@ -1,0 +1,51 @@
+
+.create-product-container {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-product-container h1 {
+  width: 70%;
+  text-align: left;
+}
+
+.create-product-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  width: 70%;
+}
+
+.create-product-form p {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.create-product-form label {
+  width: 25%;
+  text-align: right;
+}
+
+.create-product-form input,
+.create-product-form textarea,
+.create-product-form select {
+  width: 70%;
+  border: none;
+  background-color: #CAF9A6;
+  padding: 0.5rem;
+}
+
+.create-product-form input[type="submit"] {
+  background-color: #40942A;
+  color: white;
+  width: 30%;      
+}
+
+/* .create-product-input {
+  width: 300px;
+} */
