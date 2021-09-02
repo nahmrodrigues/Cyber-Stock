@@ -1,5 +1,6 @@
 from django import forms
 from .models import *
+from django.core.exceptions import ValidationError
 ##from django.forms import *
 
 class CreateProductForm(forms.ModelForm):
@@ -50,4 +51,29 @@ class CreateProductForm(forms.ModelForm):
     
     return names
 
+  def clean_product_type(self):
+      data = self.cleaned_data['product_type']
+
+      if not ProductType.objects.filter(pk=data).exists():
+        raise ValidationError("O tipo de produto não existe!")
+      else:
+        data = ProductType.objects.get(pk=data)
+
+      return data
+
+  def clean(self):
+    cleaned_data = super(CreateProductForm, self).clean()
+
+    product_type = cleaned_data.get('product_type')
+    brand = cleaned_data.get('brand')
+
+    if Product.objects.filter(
+      product_type=product_type,
+      brand=cleaned_data.get('brand')
+    ).exists():
+      raise ValidationError("O produto já existe!")
+
+    return cleaned_data
+
+  
   
