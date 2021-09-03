@@ -10,14 +10,14 @@ class ProductType(models.Model):
     
     name = models.CharField(
         verbose_name=_("Nome"),
-        help_text=_("Nome"),
+       
         max_length=50,
         blank=False
     )
 
     description = models.TextField(
         verbose_name=_("Descrição"),
-        help_text=_("Descrição"),
+        
         max_length=200,
         blank=True,
         null=True

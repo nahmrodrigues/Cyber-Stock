@@ -6,21 +6,13 @@
     <link rel="stylesheet" href="{% static 'css/product_types.css' %}">
 </head>
 
-<div id="conteiner">
+<div class="conteiner">
 
     <h1>Preencha os campos</h1>
     <form method="post" class="register-type">
-        {% csrf_token %} 
-        <div class="register-type">
-            <input class="input-text" placeholder="Digite o nome do tipo" type="text" name="product_type_name">
-            <span class="underline"></span>
-        </div>
-        <div class="register-type">
-            <input class="input-text" placeholder="Digite a descrição do tipo" type="text" name="product_type_description">
-            <span class="underline"></span>
-        </div>
-        
-        <input type="submit" class="button-send-types" id="button-send-tipos" value="Criar Tipo de Produto">
+        {% csrf_token %} {{ form.as_p }}
+       
+        <input type="submit" value="CRIAR TIPO DE PRODUTO">
         
     </form>  
 </div>
