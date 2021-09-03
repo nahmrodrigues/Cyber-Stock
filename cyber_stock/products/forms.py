@@ -1,0 +1,79 @@
+from django import forms
+from .models import *
+from django.core.exceptions import ValidationError
+##from django.forms import *
+
+class CreateProductForm(forms.ModelForm):
+
+  class Meta:
+    model = Product
+    fields = [
+        'product_type',
+        'price',
+        'brand',
+        'batch',
+        'description'
+    ]
+    widgets = {
+      'product_type': forms.Select(attrs={
+        'class': "create-product-input",
+        'placeholder': 'Tipo de Produto'
+      }),
+      'price': forms.NumberInput(attrs={
+        'class': "create-product-input", 
+        'placeholder': 'Preço'
+      }),
+      'brand': forms.TextInput(attrs={
+        'class': "create-product-input",
+        'placeholder': 'Marca'
+      }),
+      'batch': forms.NumberInput(attrs={
+        'class': "create-product-input",
+        'placeholder': 'Lote'
+      }),
+      'description': forms.Textarea(attrs={
+        'class': "create-product-input",
+        'placeholder': 'Descrição'
+      })
+    }
+
+  def __init__(self, *args, **kwargs):
+    super(CreateProductForm, self).__init__(*args, **kwargs)
+    self.fields['product_type'] = forms.ChoiceField(
+      required=True, label="Tipo de Produto", 
+      choices=self.get_product_types_names
+    )
+
+  def get_product_types_names(self):
+    names = []
+    for product_type in ProductType.objects.all():
+      names.append((product_type.id, product_type.name))
+    
+    return names
+
+  def clean_product_type(self):
+      data = self.cleaned_data['product_type']
+
+      if not ProductType.objects.filter(pk=data).exists():
+        raise ValidationError("O tipo de produto não existe!")
+      else:
+        data = ProductType.objects.get(pk=data)
+
+      return data
+
+  def clean(self):
+    cleaned_data = super(CreateProductForm, self).clean()
+
+    product_type = cleaned_data.get('product_type')
+    brand = cleaned_data.get('brand')
+
+    if Product.objects.filter(
+      product_type=product_type,
+      brand=cleaned_data.get('brand')
+    ).exists():
+      raise ValidationError("O produto já existe!")
+
+    return cleaned_data
+
+  
+  

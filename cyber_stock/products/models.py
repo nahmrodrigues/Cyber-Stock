@@ -32,9 +32,10 @@ class Product(models.Model):
         verbose_name = _("Produto")
         verbose_name_plural = _("Produtos")
     
-    product = models.ForeignKey(
+    product_type = models.ForeignKey(
         ProductType,
         related_name="product_type",
+        verbose_name=_("Tipo de Produto"),
         on_delete=models.CASCADE,
         blank=False,
         null=False
@@ -42,7 +43,6 @@ class Product(models.Model):
 
     price = models.FloatField(
         verbose_name=_("Preço"),
-        help_text=_("Preço"),
         validators=[validators.MinValueValidator(0)],
         blank=False,
         null=False
@@ -50,24 +50,28 @@ class Product(models.Model):
 
     brand = models.CharField(
         verbose_name=_("Marca"),
-        help_text=_("Marca"),
         max_length=50,
         blank=False,
         null=False
     )
 
-    batch = models.IntegerField(
+    batch = models.PositiveIntegerField(
       verbose_name=_("Lote"),
-      help_text=_("Marca"),
-      validators=[validators.MinValueValidator(0)],
       blank=False,
       null=False
     )
 
     description = models.TextField(
         verbose_name=_("Descrição"),
-        help_text=_("Descrição"),
         max_length=200,
         blank=True,
         null=True
+    )
+
+    quantity_in_stock = models.PositiveIntegerField(
+      verbose_name=_("Quantidade em Estoque"),
+      default=0,
+      editable=False,
+      blank=False,
+      null=False
     )
