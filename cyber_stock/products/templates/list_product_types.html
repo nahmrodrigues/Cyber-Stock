@@ -41,16 +41,28 @@
 	</tr>
 		
 	<tbody id="myTable">
-
+		{% for item in object_list %}
+		<tr>
+			<td>{{ item.product_type.name }}</td>
+			<td>{{ item.products_qtd }}</td>
+			<td><a href="{% url 'products' item.product_type.id %}"><img src="{% static 'icones/list.png' %}" width=13 height=13/> listar</a></td>
+			<td><img src="{% static 'icones/edit.png' %}" width=13 height=13>editar</td>
+			<td><img src="{% static 'icones/trash.png' %}" width=13 height=13> excluir</td>
+		</tr>
+		{% endfor %}
 	</tbody>
 </table>
 
-<script>
+<!-- <script>
+	// function teste(item) {
+	// 	console.log(item)
+	// }
+
 	var myArray = [
-	{'type':'Arroz', 'quantity':'5'},
-	{'type':'Feijão', 'quantity':'2'},
-	{'type':'Leite', 'quantity':'3'},
-    {'type':'Água', 'quantity':'1'},
+		{'type':'Arroz', 'quantity':'5'},
+		{'type':'Feijão', 'quantity':'2'},
+		{'type':'Leite', 'quantity':'3'},
+		{'type':'Água', 'quantity':'1'},
 	]
 
 	$('#search-input').on('keyup', function(){
@@ -80,8 +92,7 @@
 			buildTable(myArray)
 		}
 	})
-
-	buildTable(myArray)
+	// buildTable(myArray)
 
 	function searchTable(value, data){
 		var filteredData = []
@@ -117,5 +128,5 @@
 		}
 	}
 
-</script>
+</script> -->
 {% endblock %}
