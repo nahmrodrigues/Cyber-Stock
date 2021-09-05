@@ -16,22 +16,14 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-
-<br>
-
-<div>
-	<div>
-		<div class="searchbar">
-			<input id="search-input" class="searchbar__input" type="text" placeholder="Pesquisar Tipos" name="search">	
-			<button	type="submit" class="searchbar__button">
-				<img src="{% static 'icones/search.png' %}" width="19" height="18">
-			</button>
-		</div>
+<div class="searchbar-container">
+	<div class="searchbar">
+		<input id="search-input" class="searchbar__input" type="text" placeholder="Pesquisar Tipos" name="search">	
+		<button	type="submit" class="searchbar__button">
+			<img src="{% static 'icones/search.png' %}" width="19" height="18">
+		</button>
 	</div>
 </div>
-
-<br><br>
-
 
 <table class="table sticky">
 	<tr>
@@ -46,8 +38,8 @@
 			<td>{{ item.product_type.name }}</td>
 			<td>{{ item.products_qtd }}</td>
 			<td><a href="{% url 'products' item.product_type.id %}"><img src="{% static 'icones/list.png' %}" width=13 height=13/> listar</a></td>
-			<td><img src="{% static 'icones/edit.png' %}" width=13 height=13>editar</td>
-			<td><img src="{% static 'icones/trash.png' %}" width=13 height=13> excluir</td>
+			<td><a href=#><img src="{% static 'icones/edit.png' %}" width=13 height=13>editar</a></td>
+			<td><a href=#></a><img src="{% static 'icones/trash.png' %}" width=13 height=13> excluir</td>
 		</tr>
 		{% endfor %}
 	</tbody>

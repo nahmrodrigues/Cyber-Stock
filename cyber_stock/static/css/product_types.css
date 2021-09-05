@@ -54,11 +54,19 @@ div#conteiner{
     width: 20rem;
   }
 
+.searchbar-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
   /*style of searchbar*/
 .searchbar{
 	width: 100%;
 	max-width: 300px;
 	display: inline-flex;
+  margin-top: 2rem;
 }
 
 .searchbar__input {

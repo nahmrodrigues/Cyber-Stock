@@ -16,27 +16,27 @@
         <div id="menu">
             <div id="vender">
                 <img src="{% static 'icones/cesta.jpg' %}" width=40 height=40>
-                <h3 id="h3Vender">Vender</h3>
+                <a class="menu-link" href="#">Vender</a>
             </div>
             <div id="linhaVertical"></div>
             <div id="comprar">
                 <img src="{% static 'icones/caixa.jpg' %}" width=40 height=40>
-                <h3>Comprar</h3>
+                <a class="menu-link" href="#">Comprar</a>
             </div>
             <div id="linhaVertical"></div>
             <div id="estoque">
                 <img src="{% static 'icones/grid.jpg' %}" width=25 height=25>
-                <h3>Estoque</h3>
+                <a class="menu-link" href="{% url 'product_types' %}">Estoque</a>
             </div>
             <div id="linhaVertical"></div>
             <div id="cadastrar">
                 <img src="{% static 'icones/mais.jpg'  %}" width=30 height=30>
-                <a href="{% url 'create_product' %}">Cadastrar</a>
+                <a class="menu-link" href="{% url 'create_product' %}">Cadastrar</a>
             </div>
             <div id="linhaVertical"></div>
             <div id="financeiro">
                 <img src="{% static 'icones/dollar.jpg'  %}" width=30 height=30>
-                <h3>Financeiro</h3>
+                <a class="menu-link" href="#">Financeiro</a>
             </div>
         </div>
         <div id="content">

@@ -38,19 +38,10 @@ class CreateProductType(CreateView):
 class ListProducts(ListView):
     model = Product
 
-    # def get_queryset(self):
-    #     products = Product.objects.all()
-
-    #     queryset = {}
-
-    #     for product in products:
-    #         name = product.product_type.name
-    #         if name not in queryset.keys():
-    #             queryset[name] = [product]
-    #         else:
-    #             queryset[name].append(product)
-
-    #     return queryset
+    def get_queryset(self):
+        product_type = ProductType.objects.get(pk=self.kwargs['id'])
+        products = Product.objects.filter(product_type=product_type)
+        return products
         
 
 class CreateProduct(CreateView):
