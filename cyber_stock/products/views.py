@@ -10,6 +10,21 @@ from .forms import *
 class ListProductTypes(ListView):
     model = ProductType
 
+    def get_queryset(self):
+        product_types = ProductType.objects.all()
+
+        queryset = []
+
+        for product_type in product_types:
+            products = Product.objects.filter(product_type=product_type)
+            queryset.append({
+                'product_type': product_type, 
+                'products_qtd': len(products)
+            })
+
+        return queryset
+
+
 
 class CreateProductType(CreateView):
     model = ProductType
@@ -24,18 +39,9 @@ class ListProducts(ListView):
     model = Product
 
     def get_queryset(self):
-        products = Product.objects.all()
-
-        queryset = {}
-
-        for product in products:
-            name = product.product_type.name
-            if name not in queryset.keys():
-                queryset[name] = [product]
-            else:
-                queryset[name].append(product)
-
-        return queryset
+        product_type = ProductType.objects.get(pk=self.kwargs['id'])
+        products = Product.objects.filter(product_type=product_type)
+        return products
         
 
 class CreateProduct(CreateView):
