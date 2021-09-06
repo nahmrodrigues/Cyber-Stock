@@ -50,7 +50,7 @@ class CreateProduct(CreateView):
     success_url = reverse_lazy('products')
 
 
-class EditProductType(UpdateView):
+class UpdateProductType(UpdateView):
     model = ProductType
     fields = [
         'name',

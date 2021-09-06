@@ -38,7 +38,7 @@
 			<td>{{ item.product_type.name }}</td>
 			<td>{{ item.products_qtd }}</td>
 			<td><a href="{% url 'products' item.product_type.id %}"><img src="{% static 'icones/list.png' %}" width=13 height=13/> listar</a></td>
-			<td><a href=#><img src="{% static 'icones/edit.png' %}" width=13 height=13>editar</a></td>
+			<td><a href="{% url 'update_product_type' item.product_type.id %}"><img src="{% static 'icones/edit.png' %}" width=13 height=13>editar</a></td>
 			<td><a href=#></a><img src="{% static 'icones/trash.png' %}" width=13 height=13> excluir</td>
 		</tr>
 		{% endfor %}
