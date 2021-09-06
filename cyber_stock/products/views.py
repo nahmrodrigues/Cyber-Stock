@@ -42,3 +42,12 @@ class CreateProduct(CreateView):
     model = Product
     form_class = CreateProductForm
     success_url = reverse_lazy('products')
+
+
+class EditProductType(UpdateView):
+    model = ProductType
+    fields = [
+        'name',
+        'description'
+    ]
+    success_url = reverse_lazy('product_types')
