@@ -10,9 +10,7 @@ class ProductType(models.Model):
     
     name = models.CharField(
         verbose_name=_("Nome"),
-
         unique = True,
-
         max_length=50,
         blank=False
     )
