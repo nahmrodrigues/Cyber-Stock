@@ -56,4 +56,5 @@ class UpdateProductType(UpdateView):
         'name',
         'description'
     ]
+    success_url = reverse_lazy('product_types')
     
