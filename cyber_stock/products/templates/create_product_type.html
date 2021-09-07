@@ -6,14 +6,12 @@
     <link rel="stylesheet" href="{% static 'css/product_types.css' %}">
 </head>
 
-<div class="conteiner">
+<div id="conteiner">
 
     <h1>Preencha os campos</h1>
-    <form method="post" class="register-type">
+    <form method="post" class="envelopeNomeTipo">
         {% csrf_token %} {{ form.as_p }}
-       
-        <input type="submit" value="CRIAR TIPO DE PRODUTO">
-        
+        <input type="submit" value="Criar Tipo de Produto"/>
     </form>  
 </div>
 {% endblock %}

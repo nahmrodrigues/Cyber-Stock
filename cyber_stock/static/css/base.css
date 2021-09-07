@@ -4,6 +4,11 @@ input[type=submit]:hover ,button:hover {
     cursor: pointer;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 body{
     font-family: 'Roboto' , sans-serif;
     width: 100%;
@@ -84,6 +89,7 @@ table{
 	border-collapse: collapse;
 	border: 0px solid;
 	width: 100%;
+    margin: 3rem 0;
 }
 tr:nth-of-type(odd){
 	background-color: #A6F9AE;
@@ -115,4 +121,14 @@ td{
 	bottom: 0;
 	left: 0;
 	background: black;
+
+}
+
+.table-action-link {
+    margin: 0 0.5rem;
+}
+
+.menu-link {
+    font-size: 1.2rem;
+    font-weight: bold;
 }

@@ -1,140 +1,142 @@
-div.conteiner{
-  height: 30rem;
-  width: 85rem;
-  display: flex;
-  flex-direction: column;
-  padding-left: 2rem;
- 
+div#conteiner{
+    height: 30rem;
+    width: 85rem;
+    display: flex;
+    flex-direction: column;
+    padding-left: 2rem;
 }
-h1{
+.envelopeNomeTipo {
+    display: flex;
+    flex-direction: column;
+    
+    box-sizing: border-box;
+    height: 3rem;
+    width: 20rem;
+  }
   
-  width: 25rem;
-  height: 3rem;
-}
-form.register-type{
-  width: 47rem;
-  height: 30rem;
+  .nomeTipoProduto {
+    
+    border: none;
+    border-bottom: 1px solid #CCC;
+    color: #555;
+    box-sizing: border-box;
+    font-family: 'RobotoMono';
+    font-size: 18px;
+    height: 3.125rem;
+    
+    padding: 0.625rem 0rem;
+    width: 20rem;
+    outline: none;
+  }
+  
+  
+  
+  .nomeTipoProduto::-webkit-nomeTipoProduto-placeholder {
+    color: #AAA;
+  }
+  
+  .nomeTipoProduto:focus::-webkit-nomeTipoProduto-placeholder {
+    color: #005F40;
+  }
+  
+  .nomeTipoProduto:focus+.underline {
+    transform: scale(1);
+  }
+  
+  .underline{
+    background-color: #005F40;
+    display: inline-block;
+    height: 0.125rem;
+    -webkit-transform: scale(0, 1);
+    transform: scale(0, 1);
+    -webkit-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+    width: 20rem;
+  }
+
+.searchbar-container {
+  width: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  
-  
-}
-.register-type p{
-  display: flex;
-  width: 45rem;
-  
+  align-items: center;
 }
 
-.register-type label{
-  width: 6rem;
-  height: 1.5rem;
-  text-align: right;
-  justify-self: left;
-  align-self: flex-end;
-  
-  
-}
-
-.register-type input,
-.register-type textarea{
-  width: 20rem;
-  margin-left: 2rem;
-  border: none;
-  border-bottom: 1px solid #CCC;
-  color: #555;
-  font-weight: 300;
-  font-family: 'Roboto';
-  font-size: 18px;
-  height: 1.5rem;
-  
-  outline: none;
-  
-  
-}
-.register-type textarea:focus,
-.register-type input:focus{
-  
-  border-bottom: 1px solid #005F40;
-  transition: all 0.5s linear;
-}
-
-.register-type input[type="submit"] {
-  background-color: #40942A;
-  color: white;
-  width: 14rem;
-  height: 2.5rem;
-  font-size: medium;
-  padding: 0.5rem;
-  align-self: flex-end;
-  justify-self: flex-end;
-}
-
-.register-type input[type="submit"]:active{
-  background-color: #005F40;
-}
-
-.button-send-types{
-  height: 2rem;
-  width: 1rem;
-  background-color: #40942A;
-  border: none;
-  color: white;
-  
-  align-self: baseline;
-  
-}
-
-.button-send-types :active{
-  background-color: #005F40;
-}
-
-div.register-type {
- 
-  display: flex;
-  flex-direction: column;
+  /*style of searchbar*/
+.searchbar{
+	width: 100%;
+	max-width: 300px;
+	display: inline-flex;
   margin-top: 2rem;
-  margin-left: 3rem;
-  height: 3rem;
-  width: 20rem;
 }
 
-/*
-.input-text {
-  
-  border: none;
-  border-bottom: 1px solid #CCC;
-  color: #555;
-  box-sizing: border-box;
-  font-family: 'Roboto';
-  font-size: 18px;
-  height: 3.125rem;
-  padding: 0.625rem 0rem;
-  width: 20rem;
-  outline: none;
+.searchbar__input {
+	flex-grow: 1;
+	padding: 10px;
+	outline: none;
+	border: 1px solid #009879;
+	border-radius: 5px 0 0 5px;
+	background: #f4faf9;
+	transition: background 0.25s, box-shadow 0.25s;
 }
 
-
-
-.input-text::-webkit-input-text-placeholder {
-  color: #AAA;
+.searchbar__input:focus{
+	background: white;
+	box-shadow: 0 0 2px #8cc6ba;
 }
 
-.input-text:focus::-webkit-input-text-placeholder {
-  color: #005F40;
+.searchbar__input::placeholder{
+	color: #8cc6ba;
 }
 
-.input-text:focus+.underline {
-  transform: scale(1);
+.searchbar__button {
+	width: 40px;
+	background: #009879;
+	color: white;
+	outline: none;
+	border: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 0 5px 5px 0;
+	cursor: pointer;
+	user-select: none;
 }
 
-.underline{
-  background-color: #005F40;
-  display: inline-block;
-  height: 0.125rem;
-  -webkit-transform: scale(0, 1);
-  transform: scale(0, 1);
-  -webkit-transition: all 0.5s linear;
-  transition: all 0.5s linear;
-  width: 20rem;
-}*/
+/*style auf table*/
+table{
+	border-collapse: collapse;
+	border: 0px solid;
+	width: 100%;
+}
+tr:nth-of-type(odd){
+	background-color: #A6F9AE;
+}
+
+tbody{
+	font-size: 100%;
+}
+thead{
+	background-color: #74BA62;
+}
+th{
+	background-color: #74BA62;
+}
+
+td{
+	text-align: center;
+}
+
+.table.sticky th{
+	position: sticky;
+	top: 0;
+}
+.table.sticky th::after{
+	content: '';
+	width: 100%;
+	height: 2px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background: black;
+}
+
