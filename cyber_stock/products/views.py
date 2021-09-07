@@ -32,7 +32,7 @@ class CreateProductType(CreateView):
         'name',
         'description'
     ]
-    success_url = reverse_lazy('products/types/')
+    success_url = reverse_lazy('product_types')
 
 
 class ListProducts(ListView):
