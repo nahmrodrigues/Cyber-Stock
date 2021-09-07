@@ -17,7 +17,6 @@ class ProductType(models.Model):
 
     description = models.TextField(
         verbose_name=_("Descrição"),
-        help_text=_("Descrição"),
         max_length=200,
         blank=True,
         null=True
