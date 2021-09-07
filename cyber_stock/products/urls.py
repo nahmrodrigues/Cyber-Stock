@@ -9,4 +9,5 @@ urlpatterns = [
   path('types/', ListProductTypes.as_view(template_name="list_product_types.html"), name="product_types"),
   path('types/create/', CreateProductType.as_view(template_name='create_product_type.html'), name='create_product_type'),
   path('types/update/<int:pk>/', UpdateProductType.as_view(template_name='update_product_type.html'), name='update_product_type'),
+  path('types/delete/<int:pk>/', DeleteProductType.as_view(template_name='delete_product_type.html'), name='delete_product_type'),
 ]
