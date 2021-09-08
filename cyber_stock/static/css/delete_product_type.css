@@ -1,0 +1,40 @@
+div.content{
+    width: 85rem;
+    height: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    justify-self: center;
+}
+
+form.delete-type{
+    height: 2rem;
+    width: 12rem;
+    
+}
+
+.delete-type input{
+    height: 1.5rem;
+    width: 4.5rem;
+}
+
+.delete-type input[type="submit"]{
+    background-color: #40942A;
+    border: none;
+    color: white;
+}
+
+.delete-type input[type="submit"]:active{
+    background-color: #005F40;
+}
+
+.delete-type input[type="reset"]{
+    background-color: #F60000;
+    border: none;
+    color: white;
+}
+
+.delete-type input[type="reset"]:active{
+    background-color: #bd0000;
+}
