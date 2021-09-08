@@ -32,11 +32,11 @@
 			<td>{{ item.brand }}</td>
 			<td>{{ item.quantity_in_stock }}</td>
             <td>{{ item.price }}</td>
-			<td>
-                <a class="table-action-link" href="#"> ver lotes</a>
-                <a class="table-action-link" href="#"><img src="{% static 'icones/edit.png' %}" width=13 height=13> editar</a>
-                <a class="table-action-link" href="#"><img src="{% static 'icones/trash.png' %}" width=13 height=13> excluir</a>
-            </td>
+			<td><a class="table-action-link" href="#"> ver lotes</a></td>
+            <td><a class="table-action-link" href="#"><img src="{% static 'icones/edit.png' %}" width=13 height=13> editar</a></td>
+            <td><a class="table-action-link" href="#"><img src="{% static 'icones/trash.png' %}" width=13 height=13> excluir</a></td>   
+                
+            
 		</tr>
 		{% endfor %}
 	</tbody>

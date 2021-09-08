@@ -2,6 +2,15 @@
 {% load static %}
 {% block content %}
 
-AAAAAAAAAAA
+
+<p>Deseja mesmo apagar '{{ object.name }}'?</p>
+
+
+<form action="." method="post">
+    {% csrf_token %}
+
+    <input type="submit" value="Apagar">
+    <input type="reset" onclick="location.href='{% url 'product_types' %}'" value="Cancelar">
+</form>
 
 {% endblock %}
