@@ -29,21 +29,21 @@ form.delete-type{
 }
 
 .delete-type input[type="submit"]{
-    background-color: #40942A;
-    border: none;
-    color: white;
-}
-
-.delete-type input[type="submit"]:active{
-    background-color: #005F40;
-}
-
-.delete-type input[type="reset"]{
     background-color: #F60000;
     border: none;
     color: white;
 }
 
-.delete-type input[type="reset"]:active{
+.delete-type input[type="submit"]:active{
     background-color: #bd0000;
+}
+
+.delete-type input[type="reset"]{
+    background-color: rgb(165, 165, 165);
+    border: none;
+    color: white;
+}
+
+.delete-type input[type="reset"]:active{
+    background-color: rgb(117, 117, 117);
 }
