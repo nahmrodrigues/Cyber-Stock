@@ -5,19 +5,23 @@
 <head>
     <link rel="stylesheet" href="{% static 'css/delete_product_type.css' %}">
 </head>
-<div class="content">
 
-    <h1>Deseja mesmo apagar '{{ object.name }}'?</h1>
+<div class="center-content">
+    <div class="content">
 
-    <form action="." method="post" class="delete-type">
-        {% csrf_token %}
+        <h1>Deseja mesmo apagar '{{ object.name }}'?</h1>
 
-        <input type="submit" value="Apagar">
-        <input type="reset" onclick="location.href='{% url 'product_types' %}'" value="Cancelar">
-    </form>
+        <form action="." method="post" class="delete-type">
+            {% csrf_token %}
+
+            <input type="submit" value="Apagar">
+            <input type="reset" onclick="location.href='{% url 'product_types' %}'" value="Cancelar">
+        </form>
 
 
+    </div>
 </div>
+
 
 
 {% endblock %}
