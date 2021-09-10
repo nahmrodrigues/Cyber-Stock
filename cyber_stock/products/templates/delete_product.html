@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{% static 'css/delete_product_type.css' %}">
 </head>
 
-<h1>Deseja mesmo apagar '{{ object.name }}' da marca '{{ object.brand }}' ? </h1>
+<h1>Deseja mesmo apagar '{{ object.product_type.name }}' da marca '{{ object.brand }}' ? </h1>
 
 <form>
     {% csrf_token %}
