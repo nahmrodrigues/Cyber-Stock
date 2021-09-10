@@ -60,4 +60,8 @@ class UpdateProductType(UpdateView):
     
 class DeleteProductType(DeleteView):
     queryset = ProductType.objects.all()
-    success_url = reverse_lazy('product_types') 
+    success_url = reverse_lazy('product_types')
+
+class DeleteProduct(DeleteView):
+    queryset = ProductType.objects.all()
+    success_url = reverse_lazy('products')
