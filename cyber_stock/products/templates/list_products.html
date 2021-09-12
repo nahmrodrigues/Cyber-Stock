@@ -34,7 +34,7 @@
             <td>{{ item.price }}</td>
 			<td>
                 <a class="table-action-link" href="#"> ver lotes</a>
-                <a class="table-action-link" href="#"><img src="{% static 'icones/edit.png' %}" width=13 height=13> editar</a>
+                <a class="table-action-link" href="{% url 'update_product' item.id %}"><img src="{% static 'icones/edit.png' %}" width=13 height=13> editar</a>
                 <a class="table-action-link" href="#"><img src="{% static 'icones/trash.png' %}" width=13 height=13> excluir</a>
             </td>
 		</tr>

@@ -60,3 +60,5 @@ class UpdateProductType(UpdateView):
     
 class UpdateProduct(UpdateView):
     model = Product
+    form_class = UpdateProductForm
+    success_url = reverse_lazy('product_types')
