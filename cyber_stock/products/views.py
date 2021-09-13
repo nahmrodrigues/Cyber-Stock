@@ -39,7 +39,7 @@ class ListProducts(ListView):
     model = Product
 
     def get_queryset(self):
-        product_type = ProductType.objects.get(pk=self.kwargs['id'])
+        product_type = ProductType.objects.get(pk=self.kwargs['pk'])
         products = Product.objects.filter(product_type=product_type)
         return products
         
@@ -72,3 +72,37 @@ class UpdateProduct(UpdateView):
                             kwargs={'id': self.get_product_type_id()},
                             current_app='products')
     
+class DeleteProductType(DeleteView):
+    queryset = ProductType.objects.all()
+    success_url = reverse_lazy('product_types')
+
+class DeleteProduct(DeleteView):
+    queryset = Product.objects.all()
+
+    success_url = reverse_lazy('products_types')
+
+class BuyProduct(FormView):
+    form_class = BuyProductForm
+    success_url = reverse_lazy('product_types')
+
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+
+        if form.is_valid():
+            product_id = form.cleaned_data.get('product')
+
+            if not Product.objects.filter(pk=product_id).exists():
+                return self.form_invalid(form)
+            else:
+                product = Product.objects.get(pk=product_id)
+
+                product.quantity_in_stock += form.cleaned_data.get('quantity')
+                product.save()
+            
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+        
+class ProductDetails(DetailView):
+    model = Product
+    context_object_name = 'product'

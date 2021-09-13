@@ -39,11 +39,26 @@
 			<td>{{ item.products_qtd }}</td>
 			<td><a href="{% url 'products' item.product_type.id %}"><img src="{% static 'icones/list.png' %}" width=13 height=13/> listar</a></td>
 			<td><a href="{% url 'update_product_type' item.product_type.id %}"><img src="{% static 'icones/edit.png' %}" width=13 height=13>editar</a></td>
-			<td><a href=#></a><img src="{% static 'icones/trash.png' %}" width=13 height=13> excluir</td>
+			<td><a href="{% url 'delete_product_type' item.product_type.id %}"><img src="{% static 'icones/trash.png' %}" width=13 height=13> excluir</a></td>
 		</tr>
 		{% endfor %}
 	</tbody>
 </table>
+
+<div id="delete-type" class="delete-type--hidden">
+	teste
+</div>
+
+<script>
+	document.getElementById("button-delete").addEventListener("click", (e) => {
+		console.log("ENTRA");
+		const modal = document.getElementById("delete-type");
+		console.log(modal);
+		modal.classList.remove("delete-type--hidden");
+		modal.classList.add("delete-type");
+	});
+
+</script>
 
 <!-- <script>
 	// function teste(item) {

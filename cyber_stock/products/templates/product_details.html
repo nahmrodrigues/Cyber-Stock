@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/product_details.css' %}">
+</head>
+
+<div class="product-details-container">
+  <h1>Detalhes do Produto</h1>
+  <div>
+    <p class="product-attribute">
+      <b>Tipo de Produto: </b> {{ product.product_type.name }}
+    </p>
+    <p class="product-attribute">
+      <b>Marca: </b> {{ product.brand }}
+    </p>
+    <p class="product-attribute">
+      <b>Preço: </b> {{ product.price }}
+    </p>
+    <p class="product-attribute">
+      <b>Lote: </b> {{ product.batch }}
+    </p>
+    <p class="product-attribute">
+      <b>Descrição: </b> {{ product.description }}
+    </p>
+  </div>
+  <p class="product-stock">
+    <b>Quantidade em Estoque: </b> {{ product.quantity_in_stock }}
+  </p>
+</div> 
+
+{% endblock %}
+
