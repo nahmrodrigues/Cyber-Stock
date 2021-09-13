@@ -70,7 +70,7 @@ class Product(models.Model):
     quantity_in_stock = models.PositiveIntegerField(
       verbose_name=_("Quantidade em Estoque"),
       default=0,
-      editable=False,
+      editable=True,
       blank=False,
       null=False
     )

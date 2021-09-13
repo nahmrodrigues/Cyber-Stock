@@ -11,4 +11,5 @@ urlpatterns = [
   path('types/update/<int:pk>/', UpdateProductType.as_view(template_name='update_product_type.html'), name='update_product_type'),
   path('types/delete/<int:pk>/', DeleteProductType.as_view(template_name='delete_product_type.html'), name='delete_product_type'),
   path('delete/<int:pk>/', DeleteProduct.as_view(template_name='delete_product.html'), name='delete_product'),
+  path('buy/', BuyProduct.as_view(template_name='buy_product.html'), name='buy_product'),
 ]
