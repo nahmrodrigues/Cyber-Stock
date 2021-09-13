@@ -88,6 +88,9 @@ class BuyProduct(FormView):
             return self.form_valid(form)
         else:
             return self.form_invalid(form)
+
+class SellProduct(FormView):
+    success_url = reverse_lazy('product_types')
         
 class ProductDetails(DetailView):
     model = Product
