@@ -39,7 +39,7 @@ class ListProducts(ListView):
     model = Product
 
     def get_queryset(self):
-        product_type = ProductType.objects.get(pk=self.kwargs['id'])
+        product_type = ProductType.objects.get(pk=self.kwargs['pk'])
         products = Product.objects.filter(product_type=product_type)
         return products
         
@@ -57,4 +57,8 @@ class UpdateProductType(UpdateView):
         'description'
     ]
     success_url = reverse_lazy('product_types')
-    
+
+
+class ProductDetails(DetailView):
+    model = Product
+    context_object_name = 'product'
