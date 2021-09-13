@@ -69,7 +69,7 @@ class UpdateProduct(UpdateView):
     def get_success_url(self):
         """Return the URL to redirect to after processing a valid form."""
         return reverse_lazy('products',
-                            kwargs={'id': self.get_product_type_id()},
+                            kwargs={'pk': self.get_product_type_id()},
                             current_app='products')
     
 class DeleteProductType(DeleteView):
