@@ -58,6 +58,20 @@ class UpdateProductType(UpdateView):
     ]
     success_url = reverse_lazy('product_types')
     
+class UpdateProduct(UpdateView):
+    model = Product
+    form_class = UpdateProductForm
+    def get_product_type_id(self):
+        product = Product.objects.get(pk=self.kwargs['pk'])
+        product_type_id = product.product_type.id
+        return product_type_id
+    
+    def get_success_url(self):
+        """Return the URL to redirect to after processing a valid form."""
+        return reverse_lazy('products',
+                            kwargs={'pk': self.get_product_type_id()},
+                            current_app='products')
+    
 class DeleteProductType(DeleteView):
     queryset = ProductType.objects.all()
     success_url = reverse_lazy('product_types')
@@ -90,7 +104,7 @@ class BuyProduct(FormView):
             return self.form_invalid(form)
 
 class SellProduct(FormView):
-    success_url = reverse_lazy('product_types')
+    success_url = reverse_lazy()
         
 class ProductDetails(DetailView):
     model = Product
