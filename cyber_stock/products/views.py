@@ -79,7 +79,7 @@ class DeleteProductType(DeleteView):
 class DeleteProduct(DeleteView):
     queryset = Product.objects.all()
 
-    success_url = reverse_lazy('products_types')
+    success_url = reverse_lazy('product_types')
 
 class BuyProduct(FormView):
     form_class = BuyProductForm
@@ -104,7 +104,29 @@ class BuyProduct(FormView):
             return self.form_invalid(form)
 
 class SellProduct(FormView):
-    success_url = reverse_lazy()
+    form_class = SellProductForm
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+
+        if form.is_valid():
+            product_id = form.cleaned_data.get('product')
+
+            if not Product.objects.filter(pk=product_id).exists():
+                return self.form_invalid(form)
+            else:
+                product = Product.objects.get(pk=product_id)
+                product.quantity_in_stock -= form.cleaned_data.get('quantity')  #Subtraindo a quantidade do estoque pela quantidade vendida
+
+                if product.quantity_in_stock < 0:   #Se a quantidade do estoque ficar negativa, o form eh invalido
+                    return self.form_invalid(form)
+                else:
+                    product.save()
+            
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+    success_url = reverse_lazy('product_types')
         
 class ProductDetails(DetailView):
     model = Product

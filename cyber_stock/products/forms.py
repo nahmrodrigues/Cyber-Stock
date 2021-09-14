@@ -138,7 +138,8 @@ class UpdateProductForm(forms.ModelForm):
     cleaned_data = super(UpdateProductForm, self).clean()
     
     return cleaned_data
-class BuyProductForm(forms.Form):
+    
+class BuyProductForm(forms.Form): 
 
   class Meta:
     fields = [
@@ -167,3 +168,41 @@ class BuyProductForm(forms.Form):
       products.append((product.id, choice))
     
     return products
+
+class SellProductForm(forms.Form):
+  
+  class Meta:
+    fields = [
+        'product_type',
+        'product',
+        'quantity'
+    ]
+
+  def __init__(self, *args, **kwargs):
+    super(SellProductForm, self).__init__(*args, **kwargs)
+    
+    self.fields['product_type'] = forms.ChoiceField(
+      required=True,
+      label="Tipo",
+      #choices=self.get_product_types,
+    )
+
+    self.fields['product'] = forms.ChoiceField(
+     required=True, label="Produto", 
+     #choices=self.get_products
+    )
+
+    self.fields['quantity'] = forms.IntegerField(
+      required=True,
+      label="Quantidade",
+      min_value=0
+    )
+    
+  def get_product_types(self):
+    product_types = ProductType.objects.all()    
+    return product_types
+
+  def get_products(self):
+   product_type = self.get_product_type_display()
+   products = Product.objects.get(product_type = product_type)
+   return products
