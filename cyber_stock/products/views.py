@@ -78,8 +78,7 @@ class DeleteProductType(DeleteView):
 
 class DeleteProduct(DeleteView):
     queryset = Product.objects.all()
-
-    success_url = reverse_lazy('products_types')
+    success_url = reverse_lazy('product_types')
 
 class BuyProduct(FormView):
     form_class = BuyProductForm
