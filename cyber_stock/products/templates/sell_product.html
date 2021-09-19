@@ -25,9 +25,16 @@
                 <th>Quantidade</th> 
                 <th>Subtotal</th> 
             </tr>
-            <tr> 
-                <td>qafawfwaf</td>
-            </tr>
+            <tbody id="myTable">
+                {% for item in products %}
+                <tr>
+                    <td>{{ item.product.product_type.name }}</td>
+                    <td>{{ item.product.brand }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.get_subtotal }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
             
             
         </table>

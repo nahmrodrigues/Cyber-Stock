@@ -103,31 +103,42 @@ class BuyProduct(FormView):
         else:
             return self.form_invalid(form)
 
-class SellProduct(FormView):
-    form_class = SellProductForm
-    def post(self, request, *args, **kwargs):
-        form = self.get_form()
+# class SellProduct(FormView):
+#     form_class = SellProductForm
+#     def post(self, request, *args, **kwargs):
+#         form = self.get_form()
 
-        if form.is_valid():
-            product_id = form.cleaned_data.get('product')
+#         if form.is_valid():
+#             product_id = form.cleaned_data.get('product')
 
-            if not Product.objects.filter(pk=product_id).exists():
-                return self.form_invalid(form)
-            else:
-                product = Product.objects.get(pk=product_id)
-                product.quantity_in_stock -= form.cleaned_data.get('quantity')  #Subtraindo a quantidade do estoque pela quantidade vendida
+#             if not Product.objects.filter(pk=product_id).exists():
+#                 return self.form_invalid(form)
+#             else:
+#                 product = Product.objects.get(pk=product_id)
+#                 product.quantity_in_stock -= form.cleaned_data.get('quantity')  #Subtraindo a quantidade do estoque pela quantidade vendida
 
-                if product.quantity_in_stock < 0:   #Se a quantidade do estoque ficar negativa, o form eh invalido
-                    return self.form_invalid(form)
-                else:
-                    product.save()
+#                 if product.quantity_in_stock < 0:   #Se a quantidade do estoque ficar negativa, o form eh invalido
+#                     return self.form_invalid(form)
+#                 else:
+#                     product.save()
             
-            return self.form_valid(form)
-        else:
-            return self.form_invalid(form)
+#             return self.form_valid(form)
+#         else:
+#             return self.form_invalid(form)
 
-    success_url = reverse_lazy('product_types')
+#     success_url = reverse_lazy('product_types')
         
+
+class SellProduct(CreateView):
+    model = SalesCart
+    form_class = SellProductForm
+    success_url = reverse_lazy('sell_product')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['products'] = SalesCart.objects.all()
+        return context
+
 class ProductDetails(DetailView):
     model = Product
     context_object_name = 'product'
