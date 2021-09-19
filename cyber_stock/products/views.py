@@ -1,5 +1,5 @@
 # from django.template import RequestContext
-from django.views.generic import ListView, DetailView, FormView
+from django.views.generic import ListView, DetailView, FormView, View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
@@ -71,6 +71,10 @@ class UpdateProduct(UpdateView):
         return reverse_lazy('products',
                             kwargs={'pk': self.get_product_type_id()},
                             current_app='products')
+
+class ProductDetails(DetailView):
+    model = Product
+    context_object_name = 'product'
     
 class DeleteProductType(DeleteView):
     queryset = ProductType.objects.all()
@@ -80,28 +84,28 @@ class DeleteProduct(DeleteView):
     queryset = Product.objects.all()
     success_url = reverse_lazy('product_types')
 
-class BuyProduct(FormView):
+class BuyProduct(CreateView):
+    model = ShoppingCart
     form_class = BuyProductForm
+    success_url = reverse_lazy('buy_product')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['products'] = ShoppingCart.objects.all()
+        return context
+
+class CheckoutShopping(CreateView):
+    model = ShoppingCart
     success_url = reverse_lazy('product_types')
+    fields = []
 
-    def post(self, request, *args, **kwargs):
-        form = self.get_form()
-
-        if form.is_valid():
-            product_id = form.cleaned_data.get('product')
-
-            if not Product.objects.filter(pk=product_id).exists():
-                return self.form_invalid(form)
-            else:
-                product = Product.objects.get(pk=product_id)
-
-                product.quantity_in_stock += form.cleaned_data.get('quantity')
-                product.save()
-            
-            return self.form_valid(form)
-        else:
-            return self.form_invalid(form)
-        
-class ProductDetails(DetailView):
-    model = Product
-    context_object_name = 'product'
+    # def post(self, request, *args, **kwargs):
+    #     """
+    #     Handle POST requests: instantiate a form instance with the passed
+    #     POST variables and then check if it's valid.
+    #     """
+    #     form = self.get_form()
+    #     if form.is_valid():
+    #         return self.form_valid(form)
+    #     else:
+    #         return self.form_invalid(form)

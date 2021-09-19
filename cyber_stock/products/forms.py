@@ -138,9 +138,12 @@ class UpdateProductForm(forms.ModelForm):
     cleaned_data = super(UpdateProductForm, self).clean()
     
     return cleaned_data
-class BuyProductForm(forms.Form):
+
+
+class BuyProductForm(forms.ModelForm):
 
   class Meta:
+    model = ShoppingCart
     fields = [
         'product',
         'quantity'
@@ -167,3 +170,19 @@ class BuyProductForm(forms.Form):
       products.append((product.id, choice))
     
     return products
+
+  
+  def clean_product(self):
+      data = self.cleaned_data['product']
+
+      if not Product.objects.filter(pk=data).exists():
+        raise ValidationError("O produto não existe!")
+      else:
+        data = Product.objects.get(pk=data)
+
+      return data
+
+  def clean(self):
+    cleaned_data = super(BuyProductForm, self).clean()
+    
+    return cleaned_data

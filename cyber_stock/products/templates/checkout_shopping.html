@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/delete_product_type.css' %}">
+</head>
+
+
+<div class="center-content">
+    <div class="content">
+
+        <h1>Deseja mesmo finalizar compra? </h1>
+
+        <form action="." method="post" class="delete-type">
+            {% csrf_token %}
+            
+            <input type="reset" onclick="location.href='{% url 'buy_product' %}'" value="Não">
+            <input type="submit" value="Sim">
+            
+        </form>
+    </div>
+</div>
+
+{% endblock %}

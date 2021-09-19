@@ -6,6 +6,34 @@
     <link rel="stylesheet" href="{% static 'css/products.css' %}">
 </head>
 
+<table class="table sticky">
+	<tr>
+        <th data-column="type" data-colname="type" data-order="desc">Tipo</th>
+		<!-- <th data-column="brand" data-colname="brand" data-order="desc">Marca</th>							
+		<th data-column="quantity" data-colname="quantity" data-order="desc">Quantidade</th>	
+        <th data-column="price" data-colname="price" data-order="desc">Preço</th>
+		<th colspan="3">Ação</th> -->
+	</tr>
+		
+	<tbody id="myTable">
+		{% for item in products %}
+		<tr>
+            <td>{{ item.product.product_type.name }}</td>
+			<!-- <td>{{ item.brand }}</td>
+			<td>{{ item.quantity_in_stock }}</td>
+            <td>{{ item.price }}</td>
+			<td>
+                <a class="table-action-link" href="{% url 'product_details' item.id %}"> <img src="{% static 'icones/view.png' %}" width=13 height=13> visualizar</a>
+                <a class="table-action-link" href="{% url 'update_product' item.id %}"><img src="{% static 'icones/edit.png' %}" width=13 height=13> editar</a>
+                <a class="table-action-link" href="{% url 'delete_product' item.id %}"><img src="{% static 'icones/trash.png' %}" width=13 height=13> excluir</a>
+            </td> -->
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+<a href="{% url 'checkout_shopping' %}">Finalizar Compra</a>
+
 <div id="container" class="create-product-container">
     <h1>Preencha os campos</h1>
     <form method="post" class="create-product-form">
