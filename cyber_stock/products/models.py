@@ -104,3 +104,6 @@ class ShoppingCart(models.Model):
         blank=False,
         null=False
     )
+    
+    def get_subtotal(self):
+        return self.product.price * self.quantity
