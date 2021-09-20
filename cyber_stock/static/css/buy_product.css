@@ -33,7 +33,7 @@ div.added-sales{
     align-items: center;
 }
 
-form.form-sell-products{
+form.form-buy-products{
     display: flex;
     flex-direction: column;
     height: 70%;
