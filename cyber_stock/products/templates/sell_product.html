@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/sell_product.css' %}">
+</head>
+
+<div class="container">
+    <div class="input-fields">
+        <h1>Preencha os campos</h1>
+        <form method="post" class="form-sell-products">
+            {% csrf_token %} {{ form.as_p }}
+            <input type="submit" value="ADICIONAR">
+        </form>
+    </div>
+    <div class="line"></div>
+    <div class="added-sales">   
+        
+        <h1>Compras adicionadas</h1> 
+        <table>
+            <tr>
+                <th>Tipo de Prod.</th>
+                <th>Marca</th> 
+                <th>Quantidade</th> 
+                <th>Subtotal</th> 
+            </tr>
+            <tbody id="myTable">
+                {% for item in products %}
+                <tr>
+                    <td>{{ item.product.product_type.name }}</td>
+                    <td>{{ item.product.brand }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.get_subtotal }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            
+            
+        </table>
+
+    </div>
+</div>
+
+{% endblock %}
