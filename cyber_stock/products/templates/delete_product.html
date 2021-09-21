@@ -15,12 +15,11 @@
         <form action="." method="post" class="delete-type">
             {% csrf_token %}
             
-            <input type="reset" onclick="location.href='{% url 'product_types' %}'" value="Cancelar">
+            <input type="reset" onclick="location.href='{% url 'products' object.product_type.id %}'" value="Cancelar">
             <input type="submit" value="Apagar">
+
             
         </form>
-
-
     </div>
 </div>
 
