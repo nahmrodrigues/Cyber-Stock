@@ -3,7 +3,7 @@ from django.views.generic import ListView, DetailView, FormView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
-
+from django.shortcuts import redirect
 from .models import *
 from .forms import *
 
@@ -138,6 +138,14 @@ class SellProduct(CreateView):
         context['products'] = SalesCart.objects.all()
         return context
 
+def deleteProductFromCart(request, event_id):
+    product = SalesCart.objects.get(pk=event_id)
+    product.delete()
+    return redirect('sell_product')
+    
+
 class ProductDetails(DetailView):
     model = Product
     context_object_name = 'product'
+
+
