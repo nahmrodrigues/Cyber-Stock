@@ -7,68 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Cyber Stock</title>
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
-        <script>
-            
-            var url = window.location.href
-            var localizacao = url.split("/")[4]
-            var green_span
-            var span
-            if(localizacao === "buy"){
-                span = document.getElementsByClassName("span-comprar")[0]
-                span.style.backgroundColor = "#40942A"
-                span.style.color = "white"
-            }
-            else if(localizacao === "types"){
-                span = document.getElementsByClassName("span-estoque")[0]
-                span.style.backgroundColor = "#40942A"
-                span.style.color = "white"
-            }
-            switch(localizacao){
-                case "sell":
-                    
-                break
-                case "buy":
-                    
-                break
-                case "types":
-                                           
-                break
-                case "create":
-                    span = document.getElementsByClassName("span-cadastrar")[0]
-                    span.style.backgroundColor = "#40942A"
-                    span.style.color = "white" 
-                    
-                break
-
-
-            }
-            // console.log(localizacao)
-            // const dicionario ={
-            //     "types": "span-estoque",
-            //     "buy": "span-comprar",
-
-            // }
-            // var spans = document.getElementsByClassName(dicionario[localizacao])
-            // //spans = spans.item(0)
-            // console.log(spans)
-            function turnGreen(id){
-                
-                const spans = document.getElementsByTagName("span")
-                //console.log(spans)
-                for(var aux = 0; aux < spans.length; aux++){
-                    //console.log(spans.item(aux).id)
-                    if(spans.item(aux).id !== id){
-                        spans.item(aux).style.backgroundColor = "white"
-                        spans.item(aux).style.backgroundColor = "black"
-                    }
-                    else if(spans.item(aux).id === id){
-                        spans.item(aux).style.backgroundColor = "#40942A"
-                        spans.item(aux).style.backgroundColor = "white"
-                    }
-                }
-
-            }
-        </script>
+        
     </head>
     <body>
         
@@ -79,7 +18,7 @@
             <div id="vender">
                 <a class="menu-link" href="#">
                    <span id="span-vender" class="span-vender" >
-                        <img src="{% static 'icones/cesta_fix.png' %}" width=40 height=40>
+                        <img src="{% static 'icones/cesta_fix.png' %}" id="span-vender" width=40 height=40>
                         <h4>Vender</h4>
                    </span>
  
@@ -88,8 +27,8 @@
             <div id="linhaVertical"></div>
             <div id="comprar">
                 <a class="menu-link" href="{% url 'buy_product' %}">
-                    <span id="span-comprar" class="span-comprar" >
-                        <img src="{% static 'icones/caixa_fix.png' %}" width=40 height=40>
+                    <span id="span-comprar" class="span-comprar">
+                        <img src="{% static 'icones/caixa_fix.png' %}"  id="span-comprar" width=40 height=40>
                         <h4>Comprar</h4>
                     </span>
                 </a>
@@ -98,7 +37,7 @@
             <div id="estoque">
                 <a class="menu-link" href="{% url 'product_types' %}">
                     <span id="span-estoque" class="span-estoque" >
-                        <img src="{% static 'icones/stock.svg' %}" width=25 height=25>
+                        <img src="{% static 'icones/stock.svg' %}" id="span-estoque" width=25 height=25>
                         <h4>Estoque</h4>
                     </span>
 
@@ -110,7 +49,7 @@
             <div id="cadastrar">
                 <a class="menu-link" href="{% url 'create_product' %}">
                     <span id="span-cadastrar" class="span-cadastrar" >
-                        <img src="{% static 'icones/mais.svg'  %}" width=25 height=25>
+                        <img src="{% static 'icones/mais.svg'  %}" id="span-cadastrar" width=25 height=25>
                         <h4>Cadastrar</h4>
                     </span>
                 </a>
@@ -131,9 +70,65 @@
             {% endblock %}
         </div>
         
-        
+        <script>
+            
+            var url = window.location.href
+            var localizacao = url.split("/")[4]
+            console.log(localizacao)
+            
+            switch(localizacao){
+                case "sell":
+                    
+                break
+                case "buy":
+                    //pegando todos os spans com o determinado nome, e selecionando a posicao 0, pois so existe um span com esse nome
+                    var span = document.getElementsByClassName("span-comprar")[0] 
+                    turnGreen(span.id)
+                break
+                case "types":
+                    span = document.getElementsByClassName("span-estoque")[0]
+                    turnGreen(span.id)                
+                break
+                case "create":
+                    span = document.getElementsByClassName("span-cadastrar")[0]
+                    turnGreen(span.id)
+                    
+                break
+
+
+            }
+            function turnGreen(id){
+                
+                const spans = document.getElementsByTagName("span")
+                const images = document.getElementsByTagName("img")
+                //Passando por todos os spans 
+                for(var aux = 0; aux < spans.length; aux++){
+                    
+                    if(spans.item(aux).id !== id){ //Se eles nao estiverem selecionados, voltam as cores normais
+                        spans.item(aux).style.backgroundColor = "white"
+                        spans.item(aux).style.color = "black"
+
+                    }
+                    else if(spans.item(aux).id === id){ //Se ele estiver selecionado, ganha cores diferentes
+                        spans.item(aux).style.backgroundColor = "#40942A"
+                        spans.item(aux).style.color = "white"
+                        
+                    }
+                }
+
+                for(aux = 0; aux < images.length; aux++){
+                    
+                    if(images.item(aux).id !== id){
+                        images.item(aux).style.filter = "none"
+                        
+                    }
+                    else if(images.item(aux).id === id){
+                        images.item(aux).style.filter = "brightness(0) invert(1)"
+                    }
+                }
+
+            }
+        </script>
     </body>
-    <style>
-        
-    </style>
+    
 </html>

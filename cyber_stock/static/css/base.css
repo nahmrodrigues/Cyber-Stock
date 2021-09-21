@@ -47,7 +47,7 @@ span.span-comprar{
     background-color: inherit;
 }
 span.span-estoque{
-    background-color: #40942A;
+    background-color: inherit;
 }
 span.span-cadastrar{
     background-color: inherit;
@@ -64,7 +64,8 @@ span.span-financeiro{
     filter: none;
 }
 .span-estoque img{
-    filter: brightness(0) invert(1);
+    /*brightness(0) invert(1);*/
+    filter: none;
     margin: auto;
 }
 .span-cadastrar img{
@@ -85,7 +86,7 @@ span.span-financeiro{
 }
 .span-estoque h4{
     margin: auto;
-    color: white;
+    color: inherit;
 }
 .span-cadastrar h4{
     margin: auto;
