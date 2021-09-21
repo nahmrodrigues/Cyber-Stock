@@ -78,11 +78,12 @@
             
             switch(localizacao){
                 case "sell":
-                    
+                    var span = document.getElementsByClassName("span-vender")[0] 
+                    turnGreen(span.id)
                 break
                 case "buy":
                     //pegando todos os spans com o determinado nome, e selecionando a posicao 0, pois so existe um span com esse nome
-                    var span = document.getElementsByClassName("span-comprar")[0] 
+                    span = document.getElementsByClassName("span-comprar")[0] 
                     turnGreen(span.id)
                 break
                 case "types":
