@@ -14,5 +14,6 @@ urlpatterns = [
   path('types/delete/<int:pk>/', DeleteProductType.as_view(template_name='delete_product_type.html'), name='delete_product_type'),
   path('delete/<int:pk>/', DeleteProduct.as_view(template_name='delete_product.html'), name='delete_product'),
   path('buy/', BuyProduct.as_view(template_name='buy_product.html'), name='buy_product'),
-  path('checkout_shopping/', CheckoutShopping.as_view(template_name='checkout_shopping.html'), name='checkout_shopping')
+  path('checkout_shopping/', CheckoutShopping.as_view(template_name='checkout_shopping.html'), name='checkout_shopping'),
+  path('buy/delete/<event_id>', deleteProductFromCart, name='delete_cart_product'),
 ]

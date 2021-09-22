@@ -3,7 +3,7 @@ from django.views.generic import ListView, DetailView, FormView, View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
-
+from django.shortcuts import redirect
 from .models import *
 from .forms import *
 
@@ -109,3 +109,8 @@ class CheckoutShopping(CreateView):
     #         return self.form_valid(form)
     #     else:
     #         return self.form_invalid(form)
+
+def deleteProductFromCart(request, event_id):
+    product = ShoppingCart.objects.get(pk=event_id)
+    product.delete()
+    return redirect('buy_product')

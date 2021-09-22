@@ -24,6 +24,7 @@
                 <th>Marca</th> 
                 <th>Quantidade</th> 
                 <th>Subtotal</th> 
+                <th>Ação</th>
             </tr>
             <tbody id="myTable">
                 {% for item in products %}
@@ -32,6 +33,7 @@
                     <td>{{ item.product.brand }}</td>
                     <td>{{ item.quantity }}</td>
                     <td>{{ item.get_subtotal }}</td>
+                    <td><a href="{% url 'delete_cart_product' item.id %}"><img src="{% static 'icones/trash.png' %}" width=13 height=13> excluir</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
