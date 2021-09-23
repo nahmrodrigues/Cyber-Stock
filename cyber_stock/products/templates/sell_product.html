@@ -3,13 +3,13 @@
 {% block content %}
 
 <head>
-    <link rel="stylesheet" href="{% static 'css/buy_product.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sell_product.css' %}">
 </head>
 
 <div class="container">
     <div class="input-fields">
         <h1>Preencha os campos</h1>
-        <form method="post" class="form-buy-products">
+        <form method="post" class="form-sell-products">
             {% csrf_token %} {{ form.as_p }}
             <input type="submit" value="ADICIONAR">
         </form>
@@ -17,9 +17,9 @@
     <div class="line"></div>
     <div class="added-sales">   
         
-        <h1>Carrinho de compras</h1> 
+        <h1>Vendas adicionadas</h1> 
         <table>
-            <tr>
+            <tr> 
                 <th>Tipo de Prod.</th>
                 <th>Marca</th> 
                 <th>Quantidade</th> 
@@ -33,14 +33,13 @@
                     <td>{{ item.product.brand }}</td>
                     <td>{{ item.quantity }}</td>
                     <td>{{ item.get_subtotal }}</td>
-                    <td><a href="{% url 'delete_cart_product' item.id %}"><img src="{% static 'icones/trash.png' %}" width=13 height=13> excluir</a></td>
+                    <td><a href="{% url 'delete_cart_product' item.id %}"><img src="{% static 'icones/trash.png' %}" width=13 height=13> excluir</a></td> 
                 </tr>
                 {% endfor %}
             </tbody>
             
             
         </table>
-        <a class="checkout-button" href="{% url 'checkout_shopping' %}">FINALIZAR COMPRA</a>
 
     </div>
 </div>

@@ -106,9 +106,26 @@ class CheckoutShopping(CreateView):
             product.save()
             cart_object.delete()
 
-        return HttpResponseRedirect(reverse_lazy('product_types'))
+        return HttpResponseRedirect(reverse_lazy('product_types'))        
+
+class SellProduct(CreateView):
+    model = SalesCart
+    form_class = SellProductForm
+    success_url = reverse_lazy('sell_product')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['products'] = SalesCart.objects.all()
+        return context
 
 def deleteProductFromCart(request, event_id):
-    product = ShoppingCart.objects.get(pk=event_id)
+    product = SalesCart.objects.get(pk=event_id)
     product.delete()
-    return redirect('buy_product')
+    return redirect('sell_product')
+    
+
+class ProductDetails(DetailView):
+    model = Product
+    context_object_name = 'product'
+
+

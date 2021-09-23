@@ -16,4 +16,6 @@ urlpatterns = [
   path('buy/', BuyProduct.as_view(template_name='buy_product.html'), name='buy_product'),
   path('checkout_shopping/', CheckoutShopping.as_view(template_name='checkout_shopping.html'), name='checkout_shopping'),
   path('buy/delete/<event_id>', deleteProductFromCart, name='delete_cart_product'),
+  path('sell/', SellProduct.as_view(template_name='sell_product.html'), name='sell_product'),
+  path('sell/delete/<event_id>', deleteProductFromCart, name='delete_cart_product'),
 ]
