@@ -25,7 +25,6 @@ class ListProductTypes(ListView):
         return queryset
 
 
-
 class CreateProductType(CreateView):
     model = ProductType
     fields = [
@@ -96,19 +95,18 @@ class BuyProduct(CreateView):
 
 class CheckoutShopping(CreateView):
     model = ShoppingCart
-    success_url = reverse_lazy('product_types')
     fields = []
 
-    # def post(self, request, *args, **kwargs):
-    #     """
-    #     Handle POST requests: instantiate a form instance with the passed
-    #     POST variables and then check if it's valid.
-    #     """
-    #     form = self.get_form()
-    #     if form.is_valid():
-    #         return self.form_valid(form)
-    #     else:
-    #         return self.form_invalid(form)
+    def post(self, request, *args, **kwargs):
+        cart_objects = ShoppingCart.objects.all()
+
+        for cart_object in cart_objects:
+            product = cart_object.product
+            product.quantity_in_stock += cart_object.quantity
+            product.save()
+            cart_object.delete()
+
+        return HttpResponseRedirect(reverse_lazy('product_types'))
 
 def deleteProductFromCart(request, event_id):
     product = ShoppingCart.objects.get(pk=event_id)

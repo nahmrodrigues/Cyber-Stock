@@ -1,0 +1,53 @@
+
+.center-content{
+    width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+div.content{
+    width: 85rem;
+    height: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    justify-self: center;
+}
+
+/* form.delete-type{
+    height: 2rem;
+    width: 12rem
+} */
+
+.delete-type input{
+    width: 100px;
+    font-size: 2rem;
+    padding: 0.5rem;
+}
+
+.delete-type input:hover{
+    cursor: pointer;
+}
+
+.delete-type input[type="submit"]{
+    background-color: #F60000;
+    border: none;
+    color: white;
+}
+
+.delete-type input[type="submit"]:active{
+    background-color: #bd0000;
+}
+
+.delete-type input[type="reset"]{
+    background-color: rgb(165, 165, 165);
+    border: none;
+    color: white;
+}
+
+.delete-type input[type="reset"]:active{
+    background-color: rgb(117, 117, 117);
+}
