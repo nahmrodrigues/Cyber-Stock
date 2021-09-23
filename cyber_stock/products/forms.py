@@ -138,10 +138,12 @@ class UpdateProductForm(forms.ModelForm):
     cleaned_data = super(UpdateProductForm, self).clean()
     
     return cleaned_data
-    
-class BuyProductForm(forms.Form): 
+
+
+class BuyProductForm(forms.ModelForm):
 
   class Meta:
+    model = ShoppingCart
     fields = [
         'product',
         'quantity'
@@ -169,43 +171,21 @@ class BuyProductForm(forms.Form):
     
     return products
 
-# class SellProductForm(forms.Form):
   
-#   class Meta:
-#     fields = [
-#         'product_type',
-#         'product',
-#         'quantity'
-#     ]
+  def clean_product(self):
+      data = self.cleaned_data['product']
 
-#   def __init__(self, *args, **kwargs):
-#     super(SellProductForm, self).__init__(*args, **kwargs)
+      if not Product.objects.filter(pk=data).exists():
+        raise ValidationError("O produto não existe!")
+      else:
+        data = Product.objects.get(pk=data)
+
+      return data
+
+  def clean(self):
+    cleaned_data = super(BuyProductForm, self).clean()
     
-#     self.fields['product_type'] = forms.ChoiceField(
-#       required=True,
-#       label="Tipo",
-#       #choices=self.get_product_types,
-#     )
-
-#     self.fields['product'] = forms.ChoiceField(
-#      required=True, label="Produto", 
-#      #choices=self.get_products
-#     )
-
-#     self.fields['quantity'] = forms.IntegerField(
-#       required=True,
-#       label="Quantidade",
-#       min_value=0
-#     )
-    
-#   def get_product_types(self):
-#     product_types = ProductType.objects.all()    
-#     return product_types
-
-#   def get_products(self):
-#    product_type = self.get_product_type_display()
-#    products = Product.objects.get(product_type = product_type)
-#    return products
+    return cleaned_data
 
 class SellProductForm(forms.ModelForm):
 

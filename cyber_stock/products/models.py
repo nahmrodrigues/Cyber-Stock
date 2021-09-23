@@ -83,7 +83,7 @@ class SalesCart(models.Model):
 
     product = models.ForeignKey(
         Product,
-        related_name="product",
+        related_name="sales_cart_product",
         verbose_name=_("Produto"),
         on_delete=models.RESTRICT,
         blank=False,
@@ -102,3 +102,36 @@ class SalesCart(models.Model):
         return self.product.price * self.quantity
 
     
+
+class ShoppingCart(models.Model):
+
+    class Meta:
+        verbose_name = _("Produto no Carrinho de Compras")
+        verbose_name_plural = _("Produtos no Carrinho de Compras")
+
+    product = models.ForeignKey(
+        Product,
+        related_name="shopping_cart_product",
+        verbose_name=_("Produto"),
+        on_delete=models.RESTRICT,
+        blank=False,
+        null=False
+    )
+
+    quantity = models.PositiveIntegerField(
+      verbose_name=_("Quantidade"),
+      default=0,
+      editable=True,
+      blank=False,
+      null=False
+    )
+
+    provider = models.CharField(
+        verbose_name=_("Provedor"),
+        max_length=50,
+        blank=False,
+        null=False
+    )
+    
+    def get_subtotal(self):
+        return self.product.price * self.quantity

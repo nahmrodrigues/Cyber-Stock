@@ -1,5 +1,5 @@
 # from django.template import RequestContext
-from django.views.generic import ListView, DetailView, FormView
+from django.views.generic import ListView, DetailView, FormView, View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
@@ -23,7 +23,6 @@ class ListProductTypes(ListView):
             })
 
         return queryset
-
 
 
 class CreateProductType(CreateView):
@@ -71,6 +70,10 @@ class UpdateProduct(UpdateView):
         return reverse_lazy('products',
                             kwargs={'pk': self.get_product_type_id()},
                             current_app='products')
+
+class ProductDetails(DetailView):
+    model = Product
+    context_object_name = 'product'
     
 class DeleteProductType(DeleteView):
     queryset = ProductType.objects.all()
@@ -80,53 +83,35 @@ class DeleteProduct(DeleteView):
     queryset = Product.objects.all()
     success_url = reverse_lazy('product_types')
 
-class BuyProduct(FormView):
+class BuyProduct(CreateView):
+    model = ShoppingCart
     form_class = BuyProductForm
-    success_url = reverse_lazy('product_types')
+    success_url = reverse_lazy('buy_product')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['products'] = ShoppingCart.objects.all()
+        return context
+
+def deleteProductFromShoppingCart(request, event_id):
+    product = ShoppingCart.objects.get(pk=event_id)
+    product.delete()
+    return redirect('buy_product')
+
+class CheckoutShopping(CreateView):
+    model = ShoppingCart
+    fields = []
 
     def post(self, request, *args, **kwargs):
-        form = self.get_form()
+        cart_objects = ShoppingCart.objects.all()
 
-        if form.is_valid():
-            product_id = form.cleaned_data.get('product')
+        for cart_object in cart_objects:
+            product = cart_object.product
+            product.quantity_in_stock += cart_object.quantity
+            product.save()
+            cart_object.delete()
 
-            if not Product.objects.filter(pk=product_id).exists():
-                return self.form_invalid(form)
-            else:
-                product = Product.objects.get(pk=product_id)
-
-                product.quantity_in_stock += form.cleaned_data.get('quantity')
-                product.save()
-            
-            return self.form_valid(form)
-        else:
-            return self.form_invalid(form)
-
-# class SellProduct(FormView):
-#     form_class = SellProductForm
-#     def post(self, request, *args, **kwargs):
-#         form = self.get_form()
-
-#         if form.is_valid():
-#             product_id = form.cleaned_data.get('product')
-
-#             if not Product.objects.filter(pk=product_id).exists():
-#                 return self.form_invalid(form)
-#             else:
-#                 product = Product.objects.get(pk=product_id)
-#                 product.quantity_in_stock -= form.cleaned_data.get('quantity')  #Subtraindo a quantidade do estoque pela quantidade vendida
-
-#                 if product.quantity_in_stock < 0:   #Se a quantidade do estoque ficar negativa, o form eh invalido
-#                     return self.form_invalid(form)
-#                 else:
-#                     product.save()
-            
-#             return self.form_valid(form)
-#         else:
-#             return self.form_invalid(form)
-
-#     success_url = reverse_lazy('product_types')
-        
+        return HttpResponseRedirect(reverse_lazy('product_types'))      
 
 class SellProduct(CreateView):
     model = SalesCart
