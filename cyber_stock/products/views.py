@@ -93,6 +93,11 @@ class BuyProduct(CreateView):
         context['products'] = ShoppingCart.objects.all()
         return context
 
+def deleteProductFromShoppingCart(request, event_id):
+    product = ShoppingCart.objects.get(pk=event_id)
+    product.delete()
+    return redirect('buy_product')
+
 class CheckoutShopping(CreateView):
     model = ShoppingCart
     fields = []
@@ -106,7 +111,7 @@ class CheckoutShopping(CreateView):
             product.save()
             cart_object.delete()
 
-        return HttpResponseRedirect(reverse_lazy('product_types'))        
+        return HttpResponseRedirect(reverse_lazy('product_types'))      
 
 class SellProduct(CreateView):
     model = SalesCart

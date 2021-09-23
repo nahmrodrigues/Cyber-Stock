@@ -33,7 +33,7 @@
                     <td>{{ item.product.brand }}</td>
                     <td>{{ item.quantity }}</td>
                     <td>{{ item.get_subtotal }}</td>
-                    <td><a href="{% url 'delete_cart_product' item.id %}"><img src="{% static 'icones/trash.png' %}" width=13 height=13> excluir</a></td>
+                    <td><a href="{% url 'delete_shopping_cart_product' item.id %}"><img src="{% static 'icones/trash.png' %}" width=13 height=13> excluir</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
