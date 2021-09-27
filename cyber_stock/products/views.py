@@ -3,7 +3,7 @@ from django.views.generic import ListView, DetailView, FormView, View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from .models import *
 from .forms import *
 
@@ -133,4 +133,24 @@ class ProductDetails(DetailView):
     model = Product
     context_object_name = 'product'
 
+class CheckoutSales(CreateView):
+    model = SalesCart
+    fields = []
 
+    def post(self, request, *args, **kwargs):
+        cart_objects = SalesCart.objects.all()
+
+        for cart_object in cart_objects:
+            product = cart_object.product
+            product.quantity_in_stock -= cart_object.quantity
+            if product.quantity_in_stock >= 0:
+                product.save()
+                cart_object.delete()
+            elif product.quantity_in_stock < 0:
+                #raise ValidationError("A quantidade de produtos é maior que a disponível no estoque !")
+                return render(request, "checkout_sales.html", {'error':'O estoque não possui esta quantidade que você deseja! Escolha uma quantidade menor!'})
+
+
+            
+
+        return HttpResponseRedirect(reverse_lazy('product_types'))

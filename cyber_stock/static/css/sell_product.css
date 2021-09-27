@@ -118,3 +118,24 @@ div.line{
   .input-fields input[type="submit"]:active{
     background-color: #005F40;
   }
+.input-fields input[type="submit"],
+.checkout-button {
+    border: none;
+    background-color: #40942A;
+    color: white;
+    width: 10rem;
+    height: 2.5rem;
+    font-size: medium;
+    padding: 0.5rem;    
+    align-self: center;
+    margin-top: 4rem;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .input-fields input[type="submit"]:active,
+  .checkout-button:active {
+    background-color: #005F40;
+  }
