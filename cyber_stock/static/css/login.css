@@ -1,7 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Krona+One');
 
+body,
+input,
+textarea,
+div,
+span,
+p,
+b,
+h1,
+h2,
+h3,
+h4,
+ h5{
+    font-family: 'Roboto' , sans-serif;
+}
+.page-header{
+	width: 400px;
+	height: 70px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 .box-container{
-	width: 300px;
-	height: 200px;
+	width: 400px;
+	height: 300px;
   	padding: 10px;
   	margin: 10px;
   	border-radius:5px;
@@ -18,6 +41,29 @@ body{
 	flex-direction: column;
 }
 
+span{
+	color: red;
+	margin: auto;
+	height: 15%;
+	width: 50%;
+	font-weight: 800;
+}
+
+
+h1#logo{
+	font-family: 'Krona One';
+	font-size: 26px;
+	height: 25%;
+	width: 55%;
+}
+h1#title{
+	height: 25%;
+	width: 35%;
+	text-align: center;
+	font-weight: 800;
+	font-size: 26px;
+}
+
 .box-container form{
 	width: inherit;
 	height: inherit;
@@ -26,6 +72,43 @@ body{
 	align-items: center;
 	justify-content: center;
 
+}
+
+.box-container h6{
+	height: 10%;
+	width: 45%;
+}
+.box-container p{
+	display: flex;
+	width: 85%;
+	height: 20%;
+	
+}
+
+.box-container input[type="email"],
+.box-container input[type="password"]{
+	width: 85%;
+	margin-left: 2rem;
+	border: none;
+	border-bottom: 1px solid #CCC;
+	color: #555;
+	font-weight: 800;
+	font-family: 'Roboto';
+	font-size: 18px;
+	height: 90%;
+	outline: none;
+	
+}
+
+
+
+.box-container label{
+	width: 6rem;
+	height: 1.5rem;
+	text-align: right;
+	justify-self: center;
+	align-self: center;
+	font-weight: 800;
 }
 
 .box-container input[type="submit"]{
@@ -39,21 +122,6 @@ body{
 	height: 18%;
 }
 
-h1{
-	font-family: Roboto;
-	font-style: normal;
-	font-weight: normal;
-	font-size: 18px;
-	line-height: 21px;
-
-}
-strong{
-	font-family: Krona One;
-}
-h6{
-	width: 80%;
-	height: 18%;
-}
 
 a{
 	color: red;

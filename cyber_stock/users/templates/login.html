@@ -1,16 +1,28 @@
 {% load static %}
-<form method="POST" action="{% url 'login' %}">
-  {% csrf_token %}
-  
-  {% for field in form %}
-      <b>{{ field.label }}</b>: {{ field }}
-      <br><br>
-  {% endfor %}
 
-  {% if error %}
-      <span style="color: red;">{{ error }}</span>
-      <br><br>
-  {% endif %}
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/static/css/login.css">
+</head>
+<body>
+
+  <div class="page-header">
+    <h1 id="title">Sign in to</h1>
+    <h1 id="logo">Cyber Stock</h1>
+  </div>
   
-  <input type="submit" value="Enviar" />
-</form>
+  <div class="box-container">
+    <form method="POST" action="{% url 'login' %}">
+      {% csrf_token %} {{ form.as_p }}
+      
+      {% if error %}
+				<span> {{ error }} </span>
+			{% endif %}
+
+      <input type="submit" value="Entrar" />
+
+      <h6>Novo no Cyber Stock?<a href="#"> Crie sua conta.</a></h6>
+
+    </form>
+  </div>
+</body>
