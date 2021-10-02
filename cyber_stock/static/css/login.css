@@ -95,9 +95,9 @@ h1#title{
 	font-weight: 800;
 	font-family: 'Roboto';
 	font-size: 18px;
-	height: 90%;
+	height: 60%;
 	outline: none;
-	
+	align-self: center;
 }
 
 
@@ -120,6 +120,7 @@ h1#title{
 	text-decoration: none;
 	width: 90%;
 	height: 18%;
+	cursor: pointer;
 }
 
 
