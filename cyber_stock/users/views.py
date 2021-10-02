@@ -47,7 +47,13 @@ class LoginView(View):
 
             user = authenticate(email=email, password=password)
 
-            if user is not None:
+            # a variavel 'next' contem a url da proxima pagina
+            # entao se ela existir, redirecionamos para essa url apos logar
+            # caso contrario, vamos para a pagina inicial
+            if user is not None and 'next' in request.POST: 
+                login(request, user)
+                return HttpResponseRedirect(request.POST.get('next'))
+            elif user is not None:
                 login(request, user)
                 return HttpResponseRedirect(reverse('home'))
         
