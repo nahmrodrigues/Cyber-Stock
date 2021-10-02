@@ -1,15 +1,26 @@
-<form method="POST" action="{% url 'signup' %}">
-  {% csrf_token %}
-  
-  {% for field in form %}
-      <b>{{ field.label }}</b>: {{ field }}
-      <br><br>
-  {% endfor %}
 
-  {% if error %}
-      <span style="color: red;">{{ error }}</span>
-      <br><br>
-  {% endif %}
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/static/css/signup.css">
+</head>
+
+<body>
+  <div class="page-header">
+    <h1 id="title">Cadastrar novo usuário</h1>
+  </div>
   
-  <input type="submit" value="Cadastrar" />
-</form>
+  <div class="box-container">
+    <form method="POST" action="{% url 'signup' %}">
+      {% csrf_token %} {{ form.as_p }}
+      
+    
+      {% if error %}
+          <span>{{ error }}</span>
+      {% endif %}
+      
+      <input type="submit" value="Cadastrar" />
+    </form>
+  </div>
+  
+</body>
+
