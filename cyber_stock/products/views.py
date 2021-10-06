@@ -4,12 +4,21 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.shortcuts import redirect, render
+from django.conf import settings
 from .models import *
 from .forms import *
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+
 
 class ListProductTypes(ListView):
+    template_name = 'list_product_types.html'
     model = ProductType
 
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+        
     def get_queryset(self):
         product_types = ProductType.objects.all()
 
@@ -25,8 +34,15 @@ class ListProductTypes(ListView):
         return queryset
 
 
+
 class CreateProductType(CreateView):
+    template_name='create_product_type.html'
     model = ProductType
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
     fields = [
         'name',
         'description'
@@ -35,7 +51,12 @@ class CreateProductType(CreateView):
 
 
 class ListProducts(ListView):
+    template_name='list_product_types.html'
     model = Product
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
 
     def get_queryset(self):
         product_type = ProductType.objects.get(pk=self.kwargs['pk'])
@@ -44,13 +65,25 @@ class ListProducts(ListView):
         
 
 class CreateProduct(CreateView):
+    template_name='create_product.html'
     model = Product
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
     form_class = CreateProductForm
     success_url = reverse_lazy('product_types')
 
 
 class UpdateProductType(UpdateView):
+    template_name='update_product_type.html'
     model = ProductType
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
     fields = [
         'name',
         'description'
@@ -58,7 +91,13 @@ class UpdateProductType(UpdateView):
     success_url = reverse_lazy('product_types')
     
 class UpdateProduct(UpdateView):
+    template_name='update_product.html'
     model = Product
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
     form_class = UpdateProductForm
     def get_product_type_id(self):
         product = Product.objects.get(pk=self.kwargs['pk'])
@@ -72,18 +111,42 @@ class UpdateProduct(UpdateView):
                             current_app='products')
 
 class ProductDetails(DetailView):
+    template_name='product_details.html'
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
     model = Product
     context_object_name = 'product'
     
 class DeleteProductType(DeleteView):
+    template_name='delete_product_type.html'
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
     queryset = ProductType.objects.all()
     success_url = reverse_lazy('product_types')
 
 class DeleteProduct(DeleteView):
+    template_name='delete_product.html'
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+    
     queryset = Product.objects.all()
     success_url = reverse_lazy('product_types')
 
 class BuyProduct(CreateView):
+    template_name='buy_product.html'
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+    
     model = ShoppingCart
     form_class = BuyProductForm
     success_url = reverse_lazy('buy_product')
@@ -93,13 +156,22 @@ class BuyProduct(CreateView):
         context['products'] = ShoppingCart.objects.all()
         return context
 
+@login_required
 def deleteProductFromShoppingCart(request, event_id):
+
     product = ShoppingCart.objects.get(pk=event_id)
     product.delete()
     return redirect('buy_product')
 
 class CheckoutShopping(CreateView):
+    template_name='checkout_shopping.html'
     model = ShoppingCart
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+    
+
     fields = []
 
     def post(self, request, *args, **kwargs):
@@ -114,7 +186,13 @@ class CheckoutShopping(CreateView):
         return HttpResponseRedirect(reverse_lazy('product_types'))      
 
 class SellProduct(CreateView):
+    template_name='sell_product.html'
     model = SalesCart
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+    
     form_class = SellProductForm
     success_url = reverse_lazy('sell_product')
 
@@ -123,6 +201,7 @@ class SellProduct(CreateView):
         context['products'] = SalesCart.objects.all()
         return context
 
+@login_required
 def deleteProductFromCart(request, event_id):
     product = SalesCart.objects.get(pk=event_id)
     product.delete()
@@ -130,12 +209,23 @@ def deleteProductFromCart(request, event_id):
     
 
 class ProductDetails(DetailView):
+    template_name='product_details.html'
     model = Product
     context_object_name = 'product'
 
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+    
+
 class CheckoutSales(CreateView):
+    template_name='checkout_sales.html'
     model = SalesCart
     fields = []
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
 
     def post(self, request, *args, **kwargs):
         cart_objects = SalesCart.objects.all()
