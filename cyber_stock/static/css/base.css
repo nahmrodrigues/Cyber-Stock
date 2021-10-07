@@ -120,6 +120,14 @@ div#cabecalho{
     display: flex;
     justify-content: center;
 }
+
+div.logo{
+    width: 105px;
+    height: 105px;
+    background-color: skyblue;
+    
+}
+
 div#menu{
     display: flex;
     justify-content: center;
@@ -218,3 +226,40 @@ td{
     font-size: 1.2rem;
     font-weight: bold;
 }
+
+.logout a{
+    height: 100%;
+    width: 60%;
+    text-decoration: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    
+}
+
+
+
+div.logout{
+    height: 1.5rem;
+    width: 6rem;
+    font-family: 'Roboto' , sans-serif;
+    position: absolute;
+    right: 0.7rem;
+    margin-bottom: 0.1rem;
+    align-self: flex-end;
+}
+
+.logout h4{
+    width: 80%;
+    height: 100%;
+    line-height: 25px;
+    
+}
+.logout img{
+    
+    width: 20px; 
+    height: 20px;
+}
+

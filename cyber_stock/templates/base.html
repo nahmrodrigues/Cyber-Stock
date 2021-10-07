@@ -11,9 +11,19 @@
     </head>
     <body>
         
-        <div id="cabecalho">
-            <img src="{% static 'icones/CyberStock_Logo.jpg'  %}" width="105" height="105">
+        <div id="cabecalho" class="cabecalho">
+            <div class="logo">
+                <img src="{% static 'icones/CyberStock_Logo.jpg'  %}" width="105" height="105">
+            </div>
+            
+            <div class="logout">
+                <a href="{% url 'logout' %}">
+                    <h4>Sair</h4>
+                    <img src="{% static 'icones/signout.svg'  %}">
+                </a>
+            </div>   
         </div>
+
         <div id="menu">
             <div id="vender">
                 <a class="menu-link" href="{% url 'sell_product' %}">
