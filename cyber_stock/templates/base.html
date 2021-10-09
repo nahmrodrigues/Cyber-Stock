@@ -17,6 +17,7 @@
             </div>
             
             <div class="logout">
+                <h3>Olá, {{user.get_short_name }}</h3>
                 <a href="{% url 'logout' %}">
                     <h4>Sair</h4>
                     <img src="{% static 'icones/signout.svg'  %}">
@@ -59,7 +60,7 @@
             <div id="cadastrar">
                 <a class="menu-link" href="{% url 'create_product' %}">
                     <span id="span-cadastrar" class="span-cadastrar" >
-                        <img src="{% static 'icones/mais.svg'  %}" id="span-cadastrar" width=25 height=25>
+                        <img src="{% static 'icones/mais_fix.png'  %}" id="span-cadastrar" width=25 height=25>
                         <h4>Cadastrar</h4>
                     </span>
                 </a>
@@ -69,7 +70,7 @@
             <div id="financeiro">
                 <a class="menu-link" href="#">
                     <span id="span-financeiro" class="span-financeiro">
-                        <img src="{% static 'icones/dollar.svg'  %}" width=25 height=25>
+                        <img src="{% static 'icones/dollar_fix.png'  %}" width=25 height=25>
                         <h4>Financeiro</h4>
                     </span>
                 </a>

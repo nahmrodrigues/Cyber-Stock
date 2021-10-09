@@ -228,7 +228,7 @@ td{
 }
 
 .logout a{
-    height: 100%;
+    height: 40%;
     width: 60%;
     text-decoration: none;
     cursor: pointer;
@@ -236,29 +236,40 @@ td{
     align-items: center;
     justify-content: center;
     color: white;
+    /* background-color: yellow; */
+    margin: auto;
     
 }
 
 
 
 div.logout{
-    height: 1.5rem;
+    height: 5.5rem;
     width: 6rem;
     font-family: 'Roboto' , sans-serif;
     position: absolute;
-    right: 0.7rem;
-    margin-bottom: 0.1rem;
-    align-self: flex-end;
+    right: 1.8rem;
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .logout h4{
     width: 80%;
     height: 100%;
-    line-height: 25px;
-    
+    line-height: 35px;
+    /* background-color: violet; */
+}
+.logout h3{
+    width: 100%;
+    height: 60%;
+    /* background-color: tomato; */
+    margin: auto;
+    line-height: 35px;
+    color: white;
 }
 .logout img{
-    
     width: 20px; 
     height: 20px;
 }
