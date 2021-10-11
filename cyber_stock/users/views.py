@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import *
-from .models import Manager
+from .models import *
 
 class SignupManagerView(View):
     
@@ -67,3 +67,27 @@ class LogoutView(LoginRequiredMixin, View):
     def get(self, request):
         logout(request)
         return HttpResponseRedirect(reverse('login'))
+
+class RegisterEmployeeView(View):
+
+    def get(self, request):
+        data = { 'form': RegisterEmployeeForm() }     
+        return render(request, 'register_employee.html', data)
+        
+    def post(self, request):
+        form = RegisterEmployeeForm(data=request.POST)
+
+        if form.is_valid():
+            name = form.cleaned_data.get('name')
+            email = form.cleaned_data.get('email')
+            password = form.cleaned_data.get('password')
+            
+            Employee.objects.create_user(email=email, password=password, name=name)
+            return HttpResponseRedirect(reverse('product_types'))
+        
+        data = { 
+            'form': form,
+            'error': 'Usuário ou senha inválidos'
+        }  
+
+        return render(request, 'register_employee.html', data)

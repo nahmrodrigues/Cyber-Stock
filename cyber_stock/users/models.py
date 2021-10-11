@@ -55,3 +55,10 @@ class Manager(User):
         verbose_name_plural = _("Gerentes")
 
     objects = UserManager()
+
+class Employee(User):
+    class Meta:
+        verbose_name = _("Funcionário")
+        verbose_name_plural = _("Funcionários")
+
+    objects = UserManager()
