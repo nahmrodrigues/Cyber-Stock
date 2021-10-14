@@ -9,9 +9,14 @@
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
         
     </head>
+
     <body>
         
         <div id="cabecalho" class="cabecalho">
+            {% if user.is_manager %}
+                <a href="{% url 'users_list' %}" style="color: white; font-size: 16px">Usuários</a>
+            {% endif %}
+
             <div class="logo">
                 <img src="{% static 'icones/CyberStock_Logo.jpg'  %}" width="105" height="105">
             </div>
