@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/users_list.css' %}">
+</head>
+
+<h1>Usuários do sistema</h1>
+
+<a href="{% url 'signup' %}" class="add-user">
+    <div>
+        <img src="{% static 'icones/plus.svg'  %}" width="24" height="24">
+        <h4>Adicionar gerente</h4>
+    </div>
+</a>
+
+<a href="{% url 'register_employee' %}" class="add-user">
+    <div>
+        <img src="{% static 'icones/plus.svg'  %}" width="24" height="24">
+        <h4>Adicionar funcionário</h4>
+    </div>
+</a>
+
+
+{% for user in object_list %}
+    <div class="user">
+        <div class="data">
+            <p>Nome: {{ user.get_short_name }}</p>
+            <p>Email: {{ user.email}}</p> 
+        </div>
+
+        <a href="#">
+            <img src="{% static 'icones/trash-red.svg' %}" width=13 height=13> 
+            excluir
+        </a>
+
+    </div>
+{% endfor %}
+
+{% endblock %}

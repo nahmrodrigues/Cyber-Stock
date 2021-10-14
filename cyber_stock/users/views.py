@@ -1,18 +1,26 @@
+# Django imports
 from django.shortcuts import render
 from django.views import View
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView
+from django.utils.decorators import method_decorator
+
+# Local imports
 from .forms import *
 from .models import *
+from .decorators import *
 
 class SignupManagerView(View):
     
+    @method_decorator(is_manager_or_superuser)
     def get(self, request):
         data = { 'form': SignupManagerForm() }     
         return render(request, 'signup.html', data)
-        
+    
+    @method_decorator(is_manager_or_superuser)
     def post(self, request):
         form = SignupManagerForm(data=request.POST)
 
@@ -70,10 +78,12 @@ class LogoutView(LoginRequiredMixin, View):
 
 class RegisterEmployeeView(View):
 
+    @method_decorator(is_manager)
     def get(self, request):
         data = { 'form': RegisterEmployeeForm() }     
         return render(request, 'register_employee.html', data)
         
+    @method_decorator(is_manager)
     def post(self, request):
         form = RegisterEmployeeForm(data=request.POST)
 
@@ -91,3 +101,15 @@ class RegisterEmployeeView(View):
         }  
 
         return render(request, 'register_employee.html', data)
+
+class UsersList(ListView):
+    model = User
+
+    @method_decorator(is_manager)
+    def get(self, request):
+        data = { 'object_list': self.get_queryset() }     
+        return render(request, 'users_list.html', data)
+    
+    def get_queryset(self):
+        users = User.objects.all()
+        return users
