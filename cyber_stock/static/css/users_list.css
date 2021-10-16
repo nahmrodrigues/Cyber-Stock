@@ -3,25 +3,48 @@ h1{
     width: auto;
     height: auto;
 }
-a.add-user{
+a.add-employee{
     width: 20%;
     height: 10%; 
     text-decoration: none;
    
 }
-.add-user div{
+.add-employee div{
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    border: 2px dashed #005F40;
+    border: 3px dashed #005F40;
 }
 
-.add-user h4{
+.add-employee h4{
     width: 60%;
     height: 100%;
     color: #005F40;
+}
+
+a.add-manager{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 20%;
+    height: 10%; 
+    text-decoration: none;
+}
+
+.add-manager div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 3px dashed #40942A;
+}
+
+.add-manager h4{
+    width: 60%;
+    height: 100%;
+    color: #40942A;
 }
 
 div.user{
@@ -58,3 +81,5 @@ div#content{
     flex-direction: column;
     align-items: center;
 }
+
+

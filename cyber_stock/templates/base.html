@@ -14,7 +14,13 @@
         
         <div id="cabecalho" class="cabecalho">
             {% if user.is_manager %}
-                <a href="{% url 'users_list' %}" style="color: white; font-size: 16px">Usuários</a>
+                <div class="users">
+                    <img src="{% static 'icones/users.svg'  %}">
+                    <a href="{% url 'users_list' %}">
+                        <h4>Usuários do sistema</h4>
+                    </a>
+                </div>
+                
             {% endif %}
 
             <div class="logo">
