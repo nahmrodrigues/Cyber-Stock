@@ -6,11 +6,11 @@
 
 <body>
   <div class="page-header">
-    <h1 id="title">Cadastrar novo gerente</h1>
+    <h1 id="title">Cadastrar novo funcionário</h1>
   </div>
   
   <div class="box-container">
-    <form method="POST" action="{% url 'signup' %}">
+    <form method="POST" action="{% url 'register_employee' %}">
       {% csrf_token %} {{ form.as_p }}
       
     

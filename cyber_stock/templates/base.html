@@ -9,15 +9,26 @@
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
         
     </head>
+
     <body>
         
         <div id="cabecalho" class="cabecalho">
+            {% if user.is_manager %}
+                <div class="users">
+                    <img src="{% static 'icones/users.svg'  %}">
+                    <a href="{% url 'users_list' %}">
+                        <h4>Usuários do sistema</h4>
+                    </a>
+                </div>
+                
+            {% endif %}
+
             <div class="logo">
                 <img src="{% static 'icones/CyberStock_Logo.jpg'  %}" width="105" height="105">
             </div>
             
             <div class="logout">
-                <h3>Olá, {{user.get_short_name }}</h3>
+                <h3>Olá, {{ user.get_short_name }}</h3>
                 <a href="{% url 'logout' %}">
                     <h4>Sair</h4>
                     <img src="{% static 'icones/signout.svg'  %}">

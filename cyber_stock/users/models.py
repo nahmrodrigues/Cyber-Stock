@@ -49,9 +49,19 @@ class User(AbstractBaseUser, PermissionsMixin):
     def get_short_name(self):
         return self.name
 
+    def is_manager(self):
+        return hasattr(self, 'manager')
+
 class Manager(User):
     class Meta:
         verbose_name = _("Gerente")
         verbose_name_plural = _("Gerentes")
+
+    objects = UserManager()
+
+class Employee(User):
+    class Meta:
+        verbose_name = _("Funcionário")
+        verbose_name_plural = _("Funcionários")
 
     objects = UserManager()
