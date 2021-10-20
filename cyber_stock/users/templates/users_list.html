@@ -30,7 +30,7 @@
             <p>Email: {{ user.email}}</p> 
         </div>
 
-        <a href="#">
+        <a href="{% url 'delete_user' user.id %}">
             <img src="{% static 'icones/trash-red.svg' %}" width=13 height=13> 
             excluir
         </a>
