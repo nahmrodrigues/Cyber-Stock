@@ -69,7 +69,7 @@
             </div>
             <div id="linhaVertical"></div>
             <div id="cadastrar">
-                <a class="menu-link" href="{% url 'create_product' %}">
+                <a class="menu-link" href="{% url 'choose_register' %}">
                     <span id="span-cadastrar" class="span-cadastrar" >
                         <img src="{% static 'icones/mais_fix.png'  %}" id="span-cadastrar" width=25 height=25>
                         <h4>Cadastrar</h4>
@@ -96,6 +96,7 @@
             
             var url = window.location.href
             var localizacao = url.split("/")[4]
+            var aux = url.split("/")[5]
             console.log(localizacao)
             
             switch(localizacao){
@@ -109,13 +110,24 @@
                     turnGreen(span.id)
                 break
                 case "types":
-                    span = document.getElementsByClassName("span-estoque")[0]
-                    turnGreen(span.id)                
+                    if(aux === "create"){
+                        span = document.getElementsByClassName("span-cadastrar")[0]
+                        turnGreen(span.id)
+                    }
+                    else{
+                        span = document.getElementsByClassName("span-estoque")[0]
+                        turnGreen(span.id)  
+                    }
+                                  
                 break
                 case "create":
                     span = document.getElementsByClassName("span-cadastrar")[0]
                     turnGreen(span.id)
                     
+                break
+                case "choose_register":
+                    span = document.getElementsByClassName("span-cadastrar")[0]
+                    turnGreen(span.id)
                 break
 
 
