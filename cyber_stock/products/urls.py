@@ -19,5 +19,5 @@ urlpatterns = [
   path('sell/', SellProduct.as_view(template_name='sell_product.html'), name='sell_product'),
   path('sell/delete/<event_id>', deleteProductFromCart, name='delete_cart_product'),
   path('checkout_sales/', CheckoutSales.as_view(template_name='checkout_sales.html'), name='checkout_sales'),
-  
+  path('choose_register/', ChooseRegister.as_view(template_name='choose_register.html'), name='choose_register'),
 ]

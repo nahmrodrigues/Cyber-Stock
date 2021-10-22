@@ -244,3 +244,9 @@ class CheckoutSales(CreateView):
             
 
         return HttpResponseRedirect(reverse_lazy('product_types'))
+
+
+class ChooseRegister(View):
+    template_name='choose_register.html'
+    def get(self, request):     
+        return render(request, 'choose_register.html')
