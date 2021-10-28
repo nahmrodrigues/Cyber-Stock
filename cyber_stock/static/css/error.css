@@ -1,0 +1,47 @@
+.page{ padding:40px 0; background:#fff; font-family: 'Arvo', serif;
+}
+
+
+h1{
+ font-size:120px;
+ margin-bottom: 10px;
+ justify-content: center;
+ align-items: center;
+ display: flex;
+ }
+ 
+ h3{
+   font-size: 45px;
+   margin-top: 0px;
+   margin-bottom: 10px;
+   justify-content: center;
+   align-items: center;
+   display: flex;
+ }
+
+ p{
+   margin: 0px;
+   justify-content: center;
+   align-items: center;
+   display: flex;
+ }
+
+.center-container{
+   width: 100%;
+   justify-content: center;
+   align-items: center;
+   display: flex;
+
+}
+
+
+a{        
+   color: #fff!important;
+   padding: 10px 20px;
+   background: #39ac31;
+   margin: 10px 0;
+   justify-content: center;
+   align-items: center;
+   display: flex;
+   text-decoration: none;
+ }
