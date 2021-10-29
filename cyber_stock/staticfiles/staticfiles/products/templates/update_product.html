@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/update_product.css' %}">
+</head>
+
+<div id="container" class="update-product-container">
+    <h1>Preencha os campos</h1>
+    <form method="post" class="update-product-form">
+        {% csrf_token %} {{ form.as_p }}
+        <input type="submit" value="SALVAR"/>
+    </form>  
+</div>
+
+
+{% endblock %}

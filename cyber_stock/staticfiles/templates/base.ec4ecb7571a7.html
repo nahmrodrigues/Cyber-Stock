@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cyber Stock</title>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        
+    </head>
+
+    <body>
+        
+        <div id="cabecalho" class="cabecalho">
+            {% if user.is_manager %}
+                <div class="users">
+                    <img src="{% static 'icones/users.svg'  %}">
+                    <a href="{% url 'users_list' %}">
+                        <h4>Usuários do sistema</h4>
+                    </a>
+                </div>
+                
+            {% endif %}
+
+            <div class="logo">
+                <img src="{% static 'icones/CyberStock_Logo.jpg'  %}" width="105" height="105">
+            </div>
+            
+            <div class="logout">
+                <h3>Olá, {{ user.get_short_name }}</h3>
+                <a href="{% url 'logout' %}">
+                    <h4>Sair</h4>
+                    <img src="{% static 'icones/signout.svg'  %}">
+                </a>
+            </div>   
+        </div>
+
+        <div id="menu">
+            <div id="vender">
+                <a class="menu-link" href="{% url 'sell_product' %}">
+                   <span id="span-vender" class="span-vender" >
+                        <img src="{% static 'icones/cesta_fix.png' %}" id="span-vender" width=40 height=40>
+                        <h4>Vender</h4>
+                   </span>
+ 
+                </a>
+            </div>
+            <div id="linhaVertical"></div>
+            <div id="comprar">
+                <a class="menu-link" href="{% url 'buy_product' %}">
+                    <span id="span-comprar" class="span-comprar">
+                        <img src="{% static 'icones/caixa_fix.png' %}"  id="span-comprar" width=40 height=40>
+                        <h4>Comprar</h4>
+                    </span>
+                </a>
+            </div>
+            <div id="linhaVertical"></div>
+            <div id="estoque">
+                <a class="menu-link" href="{% url 'product_types' %}">
+                    <span id="span-estoque" class="span-estoque" >
+                        <img src="{% static 'icones/stock.svg' %}" id="span-estoque" width=25 height=25>
+                        <h4>Estoque</h4>
+                    </span>
+
+                </a>
+                
+                
+            </div>
+            <div id="linhaVertical"></div>
+            <div id="cadastrar">
+                <a class="menu-link" href="{% url 'choose_register' %}">
+                    <span id="span-cadastrar" class="span-cadastrar" >
+                        <img src="{% static 'icones/mais_fix.png'  %}" id="span-cadastrar" width=25 height=25>
+                        <h4>Cadastrar</h4>
+                    </span>
+                </a>
+                
+            </div>
+            <div id="linhaVertical"></div>
+            <div id="financeiro">
+                <a class="menu-link" href="#">
+                    <span id="span-financeiro" class="span-financeiro">
+                        <img src="{% static 'icones/dollar_fix.png'  %}" width=25 height=25>
+                        <h4>Financeiro</h4>
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div id="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+        
+        <script>
+            
+            var url = window.location.href
+            var localizacao = url.split("/")[4]
+            var aux = url.split("/")[5]
+            console.log(localizacao)
+            
+            switch(localizacao){
+                case "sell":
+                    var span = document.getElementsByClassName("span-vender")[0] 
+                    turnGreen(span.id)
+                break
+                case "buy":
+                    //pegando todos os spans com o determinado nome, e selecionando a posicao 0, pois so existe um span com esse nome
+                    span = document.getElementsByClassName("span-comprar")[0] 
+                    turnGreen(span.id)
+                break
+                case "types":
+                    if(aux === "create"){
+                        span = document.getElementsByClassName("span-cadastrar")[0]
+                        turnGreen(span.id)
+                    }
+                    else{
+                        span = document.getElementsByClassName("span-estoque")[0]
+                        turnGreen(span.id)  
+                    }
+                                  
+                break
+                case "create":
+                    span = document.getElementsByClassName("span-cadastrar")[0]
+                    turnGreen(span.id)
+                    
+                break
+                case "choose_register":
+                    span = document.getElementsByClassName("span-cadastrar")[0]
+                    turnGreen(span.id)
+                break
+
+
+            }
+            function turnGreen(id){
+                
+                const spans = document.getElementsByTagName("span")
+                const images = document.getElementsByTagName("img")
+                //Passando por todos os spans 
+                for(var aux = 0; aux < spans.length; aux++){
+                    
+                    if(spans.item(aux).id !== id){ //Se eles nao estiverem selecionados, voltam as cores normais
+                        spans.item(aux).style.backgroundColor = "white"
+                        spans.item(aux).style.color = "black"
+
+                    }
+                    else if(spans.item(aux).id === id){ //Se ele estiver selecionado, ganha cores diferentes
+                        spans.item(aux).style.backgroundColor = "#40942A"
+                        spans.item(aux).style.color = "white"
+                        
+                    }
+                }
+
+                for(aux = 0; aux < images.length; aux++){
+                    
+                    if(images.item(aux).id !== id){
+                        images.item(aux).style.filter = "none"
+                        
+                    }
+                    else if(images.item(aux).id === id){
+                        images.item(aux).style.filter = "brightness(0) invert(1)"
+                    }
+                }
+
+            }
+        </script>
+    </body>
+    
+</html>

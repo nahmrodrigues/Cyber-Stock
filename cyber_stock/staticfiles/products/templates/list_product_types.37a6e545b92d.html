@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- 
+<div>
+    {% for type in object_list %}
+        <p>{{ type.name }}</p>
+    {% endfor %}
+</div>	
+ -->
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/list_product_types.css' %}">
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<div class="searchbar-container">
+	<div class="searchbar">
+		<input id="search-input" class="searchbar__input" type="text" placeholder="Pesquisar Tipos" name="search">	
+		<button	type="submit" class="searchbar__button">
+			<img src="{% static 'icones/search.png' %}" width="19" height="18">
+		</button>
+	</div>
+</div>
+
+<table class="table sticky">
+	<tr>
+		<th data-column="type" data-colname="type" data-order="desc" id="filterType">Tipo de produtos &#9650</th>							
+		<th data-column="quantity" data-colname="quantity" data-order="desc" id="filterQuantity" >Quantidade de marcas &#9650</th>	
+		<th colspan="3">Ação</th>
+	</tr>
+		
+	<tbody id="myTable">
+		{% for item in object_list %}
+		<tr>
+			<td>{{ item.product_type.name }}</td>
+			<td>{{ item.products_qtd }}</td>
+			<td><a href="{% url 'products' item.product_type.id %}"><img src="{% static 'icones/list.png' %}" width=13 height=13/> listar</a></td>
+			<td><a href="{% url 'update_product_type' item.product_type.id %}"><img src="{% static 'icones/edit.png' %}" width=13 height=13>editar</a></td>
+			<td><a href="{% url 'delete_product_type' item.product_type.id %}"><img src="{% static 'icones/trash.png' %}" width=13 height=13> excluir</a></td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+
+
+<script>
+	document.getElementById("button-delete").addEventListener("click", (e) => {
+		console.log("ENTRA");
+		const modal = document.getElementById("delete-type");
+		console.log(modal);
+		modal.classList.remove("delete-type--hidden");
+		modal.classList.add("delete-type");
+	});
+
+</script>
+
+<!-- <script>
+	// function teste(item) {
+	// 	console.log(item)
+	// }
+
+	var myArray = [
+		{'type':'Arroz', 'quantity':'5'},
+		{'type':'Feijão', 'quantity':'2'},
+		{'type':'Leite', 'quantity':'3'},
+		{'type':'Água', 'quantity':'1'},
+	]
+
+	$('#search-input').on('keyup', function(){
+		var value = $(this).val()
+		console.log('Value: ', value)
+		var data = searchTable(value, myArray)
+		buildTable(data)
+	})
+	
+	$('th').on('click', function(){
+        if ($(this).index() < 2) {
+			var column = $(this).data('column')
+			var order = $(this).data('order')
+			var text = $(this).html()
+			text = text.slice(0, -1)
+
+			if(order == 'desc'){
+				$(this).data('order', 'asc')
+				myArray = myArray.sort((a,b) => a[column] > b[column] ? 1 : -1)
+				text = text+'&#9660'
+			} else {
+				$(this).data('order', 'desc')
+				myArray = myArray.sort((a,b) => a[column] < b[column] ? 1 : -1)
+				text = text + '&#9650'
+			}
+			$(this).html(text)
+			buildTable(myArray)
+		}
+	})
+	// buildTable(myArray)
+
+	function searchTable(value, data){
+		var filteredData = []
+
+		for(var i=0; i<data.length; i++){
+			value = value.toLowerCase()
+            value = value.normalize("NFD")
+			var type = data[i].type.toLowerCase()
+
+			if(type.includes(value)){
+				filteredData.push(data[i])
+			}
+		}
+
+		return filteredData
+	}
+
+	function buildTable(data){
+		var table = document.getElementById('myTable')
+
+		table.innerHTML = ''
+
+		for(var i = 0; i < data.length; i++){
+			var row = `<tr>
+						<td>${data[i].type}</td>
+						<td>${data[i].quantity}</td>
+						<td><img src="{% static 'icones/list.png' %}" width=13 height=13>listar</td>
+						<td><img src="{% static 'icones/edit.png' %}" width=13 height=13>editar</td>
+						<td><img src="{% static 'icones/trash.png' %}" width=13 height=13> excluir</td>
+					</tr>`
+										
+			table.innerHTML += row					
+		}
+	}
+
+</script> -->
+{% endblock %}

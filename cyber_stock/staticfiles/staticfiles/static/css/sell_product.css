@@ -1,0 +1,141 @@
+
+div#content{
+    height: 30rem;
+    width: 100%;
+    
+}
+
+div.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+div.input-fields{
+    width: 50%;
+    height: 100%;
+    /* background-color: red; */
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    
+}
+
+div.added-sales{
+    width: 50%;
+    height: 100%;
+    /* background-color: blue; */
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form.form-sell-products{
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    width: 100%;
+    align-items: center;
+    
+}
+
+div.line{
+    height: 20rem;
+    width: 0.1rem;
+
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    
+    border-right: 3px solid #40942A;
+}
+
+.input-fields h1{
+    width: 18.5rem;
+    align-self: center;
+}
+.added-sales h1{
+    width: 19rem;
+
+    align-self: center;
+    
+
+}
+
+.input-fields label{
+    width: 6rem;
+    height: 1.5rem;
+    text-align: right;
+    justify-self: left;
+    
+}
+.input-fields p{
+    display: flex;
+    width: 25rem;
+    
+    justify-content: space-around;
+   /* background-color: blue;*/
+}
+.input-fields select{
+    width: calc(60% + 1rem);
+    border: white;
+    border-bottom: 1px solid #CCC;
+    transition: all 0.5s linear;
+    
+}
+.input-fields input[type="number"]{
+    border: white;
+    border-bottom: 1px solid #CCC;
+    color: #555;
+    font-weight: 300;
+    font-family: 'Roboto';
+    font-size: 18px;
+    outline: none;
+    width: calc(60% + 1rem);
+    /*background-color: aquamarine;*/
+}
+.input-fields input[type="number"]:focus{
+    border: white;
+    border-bottom: 1px solid #005F40;
+    transition: all 0.5s linear;
+}
+
+
+.input-fields input[type="submit"] {
+    border: none;
+    background-color: #40942A;
+    color: white;
+    width: 10rem;
+    height: 2.5rem;
+    font-size: medium;
+    padding: 0.5rem;    
+    align-self: center;
+    margin-top: 4rem;
+  }
+
+  .input-fields input[type="submit"]:active{
+    background-color: #005F40;
+  }
+.input-fields input[type="submit"],
+.checkout-button {
+    border: none;
+    background-color: #40942A;
+    color: white;
+    width: 10rem;
+    height: 2.5rem;
+    font-size: medium;
+    padding: 0.5rem;    
+    align-self: center;
+    margin-top: 4rem;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .input-fields input[type="submit"]:active,
+  .checkout-button:active {
+    background-color: #005F40;
+  }

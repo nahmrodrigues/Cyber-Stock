@@ -1,0 +1,23 @@
+.product-details-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  margin-left: 4rem;
+}
+
+.product-attribute {
+  border-left: solid 3px #005F40;
+}
+
+.product-attribute b {
+  margin: 0 1rem;
+}
+
+.product-stock {
+  font-size: 1.3rem;
+}
+
+.product-stock b {
+  margin-right: 1rem;
+}

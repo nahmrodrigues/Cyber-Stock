@@ -1,1 +1,1 @@
-web: gunicorn cyber_stock.wsgi
+web: cd cyber_stock && gunicorn cyber_stock.wsgi --log-file -

@@ -1,0 +1,85 @@
+
+h1{
+    width: auto;
+    height: auto;
+}
+a.add-employee{
+    width: 20%;
+    height: 10%; 
+    text-decoration: none;
+   
+}
+.add-employee div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 3px dashed #005F40;
+}
+
+.add-employee h4{
+    width: 60%;
+    height: 100%;
+    color: #005F40;
+}
+
+a.add-manager{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 20%;
+    height: 10%; 
+    text-decoration: none;
+}
+
+.add-manager div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 3px dashed #40942A;
+}
+
+.add-manager h4{
+    width: 60%;
+    height: 100%;
+    color: #40942A;
+}
+
+div.user{
+    
+    height: 15%;
+    width: 35%;
+    border-bottom: 1px solid #005F40;
+    display: flex;
+    /* background-color: lightsteelblue; */
+}
+
+.user a{
+    height: 100%;
+    width: 30%;
+    color: red;
+    text-decoration: none;
+    align-self: center;
+}
+
+div.data{
+    height: 100%;
+    width: 70%;
+}
+
+.data p{
+    width: 100%;
+    height: 50%;
+}
+
+div#content{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+

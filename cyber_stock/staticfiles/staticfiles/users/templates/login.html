@@ -1,0 +1,31 @@
+{% load static %}
+
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/static/css/login.css">
+</head>
+<body>
+
+  <div class="page-header">
+    <h1 id="title">Sign in to</h1>
+    <h1 id="logo">Cyber Stock</h1>
+  </div>
+  
+  <div class="box-container">
+    <form method="POST" action="{% url 'login' %}">
+      {% csrf_token %} {{ form.as_p }}
+      
+      {% if error %}
+				<span> {{ error }} </span>
+			{% endif %}
+
+      {% if request.GET.next %}
+        <input type="hidden" name="next" value="{{ request.GET.next }}">
+      {% endif %}
+      <input type="submit" value="Entrar" />
+
+      <h6>Novo no Cyber Stock?<a href="/users/signup"> Crie sua conta.</a></h6>
+
+    </form>
+  </div>
+</body>

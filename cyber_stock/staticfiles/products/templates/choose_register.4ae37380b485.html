@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/choose_register.css' %}">
+</head>
+
+<div class="content-page">
+    <h1>O que deseja cadastrar?</h1>
+    <div class="options">
+        <a href="{% url 'create_product_type' %}">
+            <div id="register-types">
+                <h3>Cadastrar tipo de produto</h3>
+            </div>  
+        </a>
+        
+        <a href="{% url 'create_product' %}">
+            <div id="register-product">
+                <h3>Cadastrar produto</h3>
+            </div>
+        </a>
+        
+    </div>
+
+</div>
+
+{% endblock %}

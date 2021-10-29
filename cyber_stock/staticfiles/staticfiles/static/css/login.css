@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Krona+One');
+
+body,
+input,
+textarea,
+div,
+span,
+p,
+b,
+h1,
+h2,
+h3,
+h4,
+ h5{
+    font-family: 'Roboto' , sans-serif;
+}
+.page-header{
+	width: 400px;
+	height: 70px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.box-container{
+	width: 400px;
+	height: 300px;
+  	padding: 10px;
+  	margin: 10px;
+  	border-radius:5px;
+  	background-color: #005F40;
+  	color: white;
+  	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
+}
+
+body{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+span{
+	color: red;
+	margin: auto;
+	height: 15%;
+	width: 50%;
+	font-weight: 800;
+}
+
+
+h1#logo{
+	font-family: 'Krona One';
+	font-size: 26px;
+	height: 25%;
+	width: 55%;
+}
+h1#title{
+	height: 25%;
+	width: 35%;
+	text-align: center;
+	font-weight: 800;
+	font-size: 26px;
+}
+
+.box-container form{
+	width: inherit;
+	height: inherit;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+}
+
+.box-container h6{
+	height: 10%;
+	width: 45%;
+}
+.box-container p{
+	display: flex;
+	width: 85%;
+	height: 20%;
+	
+}
+
+.box-container input[type="email"],
+.box-container input[type="password"]{
+	width: 85%;
+	margin-left: 2rem;
+	border: none;
+	border-bottom: 1px solid #CCC;
+	color: #555;
+	font-weight: 800;
+	font-family: 'Roboto';
+	font-size: 18px;
+	height: 60%;
+	outline: none;
+	align-self: center;
+}
+
+
+
+.box-container label{
+	width: 6rem;
+	height: 1.5rem;
+	text-align: right;
+	justify-self: center;
+	align-self: center;
+	font-weight: 800;
+}
+
+.box-container input[type="submit"]{
+	background-color: #40942A;
+	border: none;
+	color: white;
+	padding: 0.5rem;
+	font-size: medium;
+	text-decoration: none;
+	width: 90%;
+	height: 18%;
+	cursor: pointer;
+}
+
+
+a{
+	color: red;
+	text-decoration: none;
+}

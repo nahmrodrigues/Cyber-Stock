@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/delete_product_type.css' %}">
+</head>
+
+
+<div class="center-content">
+    <div class="content">
+
+        <h1>Deseja mesmo apagar '{{ object.product_type.name }}' da marca '{{ object.brand }}' ? </h1>
+
+        <form action="." method="post" class="delete-type">
+            {% csrf_token %}
+            
+            <input type="reset" onclick="location.href='{% url 'products' object.product_type.id %}'" value="Cancelar">
+            <input type="submit" value="Apagar">
+
+            
+        </form>
+    </div>
+</div>
+
+{% endblock %}
